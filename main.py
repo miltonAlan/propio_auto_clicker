@@ -4,9 +4,9 @@ from pynput import keyboard
 
 def taking_notes():
     pasos = [
-        ("Chrome", (1569, 1063)),
-        ("VS Code", (1675, 975)),   # ajusta si hace falta
-        ("Chrome Tab VSCode", (2503, 10)),
+        ("Chrome icon", (1569, 1063)),
+        ("inside chrome", (1675, 975)),   # ajusta si hace falta
+        ("Chrome Tab VSCode", (2496, 17)),
         ("inside VSCode", (2728, 498))
     ]
 
@@ -87,6 +87,41 @@ def intro_ESP():
             pyautogui.press('space')
             print("SPACE presionado")
 
+def intro_ENG():
+    pasos = [
+        ("Brave", (1600, 1067)),
+        ("ENG", (2269, 179)),
+    ]
+
+    for nombre, (x, y) in pasos:
+        pyautogui.moveTo(x, y)
+        pyautogui.click()
+        print(f"Click en {nombre} -> ({x}, {y})")
+        time.sleep(0.5)
+
+        # 👉 Presionar SPACE para reproducir greeting
+        if nombre == "ENG":
+            time.sleep(0.1)
+            pyautogui.press('space')
+            print("SPACE presionado")
+
+def volume_up():
+    pasos = [
+        ("voicemeter icon", (1678, 1060)),
+        ("UP", (2765, 844)),
+    ]
+
+    for nombre, (x, y) in pasos:
+        pyautogui.moveTo(x, y)
+        pyautogui.click()
+        print(f"Click en {nombre} -> ({x}, {y})")
+        time.sleep(0.5)
+
+        # 👉 Presionar SPACE para reproducir greeting
+        if nombre == "UP":
+            time.sleep(0.1)
+            pyautogui.scroll(1)
+
 def close_call_audio():
     pasos = [
         ("voicemeter icon", (1678, 1060)),
@@ -154,14 +189,24 @@ def on_press(key):
             print("\nF4 presionado → closing audio call...")
             close_call_audio()
         if key == keyboard.Key.f6:
-            print("\nF6 presionado → taking video call...")
-            taking_call_video()
-        if key == keyboard.Key.f7:
-            print("\nF7 presionado → closing video call...")
-            close_call_video()
+            print("\nF6 presionado → intro ENG...")
+            intro_ENG()
         if key == keyboard.Key.f8:
             print("\nF8 presionado → intro ESP...")
             intro_ESP()
+        if key == keyboard.Key.f9:
+            print("\nF9 presionado → taking video call...")
+            taking_call_video()
+        if key == keyboard.Key.f10:
+            print("\nF10 presionado → closing video call...")
+            close_call_video()
+        if key.char == '-':
+            print("Menos presionado")
+        # Tecla "+"
+        elif key.char == '+':
+            volume_up()
+            print("Más presionado")
+
     except Exception as e:
         print(e)
 
