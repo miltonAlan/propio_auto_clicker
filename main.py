@@ -107,20 +107,35 @@ def intro_ENG():
 
 def volume_up():
     pasos = [
-        ("voicemeter icon", (1678, 1060)),
-        ("UP", (2765, 844)),
+        ("dead point click", (2679, 1066)),
+        ("voicemeter icon", (1678, 1060)),        
+        ("volume bar", (2765, 844)),
     ]
 
     for nombre, (x, y) in pasos:
         pyautogui.moveTo(x, y)
         pyautogui.click()
         print(f"Click en {nombre} -> ({x}, {y})")
-        time.sleep(0.5)
+        time.sleep(0.1)
 
-        # 👉 Presionar SPACE para reproducir greeting
-        if nombre == "UP":
-            time.sleep(0.1)
-            pyautogui.scroll(1)
+    pyautogui.scroll(1)
+    print("volume up")        
+
+def volume_down():
+    pasos = [
+        ("dead point click", (2679, 1066)),
+        ("voicemeter icon", (1678, 1060)),        
+        ("volume bar", (2765, 844)),
+    ]
+
+    for nombre, (x, y) in pasos:
+        pyautogui.moveTo(x, y)
+        pyautogui.click()
+        print(f"Click en {nombre} -> ({x}, {y})")
+        time.sleep(0.1)
+
+    pyautogui.scroll(-1)
+    print("volume down")        
 
 def close_call_audio():
     pasos = [
@@ -201,8 +216,8 @@ def on_press(key):
             print("\nF10 presionado → closing video call...")
             close_call_video()
         if key.char == '-':
+            volume_down()
             print("Menos presionado")
-        # Tecla "+"
         elif key.char == '+':
             volume_up()
             print("Más presionado")
