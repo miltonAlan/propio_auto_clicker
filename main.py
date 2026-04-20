@@ -7,7 +7,7 @@ def taking_notes():
         ("Chrome icon", (1569, 1063)),
         ("inside chrome", (1675, 975)),   # ajusta si hace falta
         ("Chrome Tab VSCode", (2496, 17)),
-        ("inside VSCode", (2728, 498))
+        ("inside VSCode", (2728, 950))
     ]
 
     for nombre, (x, y) in pasos:
@@ -17,7 +17,8 @@ def taking_notes():
         time.sleep(0.1)
         # 🔽 Scroll hacia abajo después de la secuencia
     print("Haciendo scroll hacia abajo...")
-    pyautogui.scroll(-500)
+    pyautogui.scroll(-800)
+    pyautogui.scroll(-800)
 
 def taking_call_audio():
     pasos = [
@@ -218,7 +219,7 @@ def on_press(key):
         if key.char == '-':
             volume_down()
             print("Menos presionado")
-        elif key.char == '+':
+        elif key.char == '*':
             volume_up()
             print("Más presionado")
 
