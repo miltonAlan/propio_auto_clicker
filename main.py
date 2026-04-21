@@ -49,6 +49,33 @@ def taking_call_audio():
             pyautogui.press('space')
             print("SPACE presionado")
 
+def dial_out():
+    pasos = [
+        ("chrome", (200, 757)),
+        ("inside", (150, 660)), # pilas no cambiar el nombre
+        ("dial out button", (162, 160)), 
+        ("text box", (151, 296)) # no cambiar
+    ]
+
+    for nombre, (x, y) in pasos:
+        pyautogui.moveTo(x, y)
+        pyautogui.click()
+        print(f"Click en {nombre} -> ({x}, {y})")
+        time.sleep(0.5)
+
+        # 👉 Ejecutar Ctrl + 5 cuando dentro de chrome
+        if nombre == "inside":
+            time.sleep(0.1)
+            pyautogui.hotkey('ctrl', '5')
+            print("Ctrl + 5 ejecutado")
+
+        if nombre == "text box":
+            time.sleep(0.5)
+            pyautogui.hotkey('ctrl', 'v')
+            time.sleep(0.1)
+            pyautogui.press('enter')
+            print("placing a call")            
+
 def taking_call_video():
     pasos = [
         ("chrome", (200, 757)),
@@ -222,6 +249,9 @@ def on_press(key):
         elif key.char == '*':
             volume_up()
             print("Más presionado")
+        elif key.char == '/':
+            dial_out()
+            print("/ presionado")
 
     except Exception as e:
         print(e)
