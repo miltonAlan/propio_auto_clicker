@@ -4,6 +4,7 @@ from pynput import keyboard
 
 def taking_notes():
     pasos = [
+        ("dead point click", (2679, 1066)),
         ("Chrome icon", (1569, 1063)),
         ("inside chrome", (1675, 975)),   # ajusta si hace falta
         ("Chrome Tab VSCode", (2496, 17)),
@@ -18,10 +19,10 @@ def taking_notes():
         # 🔽 Scroll hacia abajo después de la secuencia
     print("Haciendo scroll hacia abajo...")
     pyautogui.scroll(-800)
-    pyautogui.scroll(-800)
 
 def taking_call_audio():
     pasos = [
+        ("dead point click", (2679, 1066)),
         ("chrome", (200, 757)),
         ("inside", (150, 660)), # pilas no cambiar el nombre
         ("accept call", (948, 478)), 
@@ -51,6 +52,7 @@ def taking_call_audio():
 
 def dial_out():
     pasos = [
+        ("dead point click", (2679, 1066)),
         ("chrome", (200, 757)),
         ("inside", (150, 660)), # pilas no cambiar el nombre
         ("dial out button", (162, 160)), 
@@ -76,8 +78,22 @@ def dial_out():
             pyautogui.press('enter')
             print("placing a call")            
 
+def mute_unmute():
+    pasos = [
+        ("dead point click", (2679, 1066)),
+        ("voicemeter icon", (1678, 1060)),        
+        ("B1 channel", (2556, 878)),
+    ]
+
+    for nombre, (x, y) in pasos:
+        pyautogui.moveTo(x, y)
+        pyautogui.click()
+        print(f"Click en {nombre} -> ({x}, {y})")
+        time.sleep(0.5)       
+
 def taking_call_video():
     pasos = [
+        ("dead point click", (2679, 1066)),
         ("chrome", (200, 757)),
         ("inside", (150, 660)), # pilas no cambiar el nombre
         ("accept call", (948, 478)), 
@@ -99,6 +115,7 @@ def taking_call_video():
 
 def intro_ESP():
     pasos = [
+        ("dead point click", (2679, 1066)),
         ("Brave", (1600, 1067)),
         ("ESP", (2269, 209)),
     ]
@@ -117,6 +134,7 @@ def intro_ESP():
 
 def intro_ENG():
     pasos = [
+        ("dead point click", (2679, 1066)),
         ("Brave", (1600, 1067)),
         ("ENG", (2269, 179)),
     ]
@@ -163,10 +181,23 @@ def volume_down():
         time.sleep(0.1)
 
     pyautogui.scroll(-1)
-    print("volume down")        
+    print("volume down")   
+
+def edge():
+    pasos = [
+        ("dead point click", (2679, 1066)),
+        ("edge", (1531, 1063)),        
+    ]
+
+    for nombre, (x, y) in pasos:
+        pyautogui.moveTo(x, y)
+        pyautogui.click()
+        print(f"Click en {nombre} -> ({x}, {y})")
+        time.sleep(0.1)
 
 def close_call_audio():
     pasos = [
+        ("dead point click", (2679, 1066)),
         ("voicemeter icon", (1678, 1060)),
         ("A3", (2813, 838)),
         ("chrome", (200, 757)),
@@ -198,6 +229,7 @@ def close_call_audio():
 
 def close_call_video():
     pasos = [
+        ("dead point click", (2679, 1066)),
         ("voicemeter icon", (1678, 1060)),
         ("A3", (2813, 838)),
         ("chrome", (200, 757)),
@@ -246,12 +278,18 @@ def on_press(key):
         if key.char == '-':
             volume_down()
             print("Menos presionado")
-        elif key.char == '*':
+        if key.char == '*':
             volume_up()
             print("Más presionado")
-        elif key.char == '/':
+        if key.char == '/':
             dial_out()
             print("/ presionado")
+        if key.char == '`' or key.char == '|':
+            mute_unmute()
+            print("Se presionó ` o |")        
+        if key.char == ',':
+            edge()
+            print("Se presionó ,")
 
     except Exception as e:
         print(e)
