@@ -16,9 +16,9 @@ def taking_notes():
         pyautogui.click()
         print(f"Click en {nombre} -> ({x}, {y})")
         time.sleep(0.1)
-        # 🔽 Scroll hacia abajo después de la secuencia
+        # 🔽 Scroll hacia abajo d-espués de la secuencia
     print("Haciendo scroll hacia abajo...")
-    pyautogui.scroll(-800)
+    pyautogui.scroll(-600)
 
 def taking_call_audio():
     pasos = [
@@ -252,6 +252,23 @@ def close_call_video():
             pyautogui.hotkey('ctrl', '5')
             print("Ctrl + 5 ejecutado")
 
+def deepL():
+    pasos = [
+        ("dead point click", (2679, 1066)),
+        ("edge", (1531, 1063)),     
+        ("3x click", (2376, 1031)), 
+        ("3x click", (2376, 1031)), 
+        ("3x click", (2376, 1031)), 
+        ("deepL", (1615, 1031))
+    ]
+
+    for nombre, (x, y) in pasos:
+        pyautogui.moveTo(x, y)
+        pyautogui.click()
+        print(f"Click en {nombre} -> ({x}, {y})")
+        time.sleep(0.1)          
+
+
 def on_press(key):
     try:
         if key == keyboard.Key.f2:
@@ -287,9 +304,12 @@ def on_press(key):
         if key.char == '`' or key.char == '|':
             mute_unmute()
             print("Se presionó ` o |")        
-        if key.char == ',':
+        if key.char == ';':
             edge()
-            print("Se presionó ,")
+            print("Se presionó ;")
+        if key.char == ']':
+            deepL()
+            print("Se presionó ]")            
 
     except Exception as e:
         print(e)
