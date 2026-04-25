@@ -187,6 +187,7 @@ def edge():
     pasos = [
         ("dead point click", (2679, 1066)),
         ("edge", (1531, 1063)),        
+        ("3x click", (2376, 1031))
     ]
 
     for nombre, (x, y) in pasos:
