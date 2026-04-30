@@ -1,6 +1,7 @@
 import pyautogui
 import time
 from pynput import keyboard
+from datetime import datetime
 
 def taking_notes():
     pasos = [
@@ -196,6 +197,12 @@ def edge():
         print(f"Click en {nombre} -> ({x}, {y})")
         time.sleep(0.1)
 
+def hold_time():
+    taking_notes()
+    hora_actual = datetime.now().strftime("%H:%M:%S")
+    pyautogui.write(hora_actual)
+
+
 def close_call_audio():
     pasos = [
         ("dead point click", (2679, 1066)),
@@ -310,8 +317,10 @@ def on_press(key):
             print("Se presionó ;")
         if key.char == ']':
             deepL()
-            print("Se presionó ]")            
-
+            print("Se presionó ]")   
+        if key.char == '[':
+            hold_time()
+            print("Se presionó [")                        
     except Exception as e:
         print(e)
 
