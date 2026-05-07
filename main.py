@@ -31,6 +31,11 @@ def taking_call_audio():
         ("A3", (2813, 838)),
         ("Brave", (1600, 1067)),
         ("ENG", (2275, 175)),
+        # scroll for intake form;
+        ("dead point click", (2679, 1066)),
+        ("chrome", (200, 757)),
+        ("inside again", (150, 660)),
+        ("dead point chrome", (773, 178)),
     ]
 
     for nombre, (x, y) in pasos:
@@ -50,6 +55,9 @@ def taking_call_audio():
             time.sleep(1)
             pyautogui.press('space')
             print("SPACE presionado")
+
+    # Haciendo scroll hacia abajo...
+    pyautogui.scroll(-200)
 
 def dial_out():
     pasos = [
@@ -99,7 +107,12 @@ def taking_call_video():
         ("inside", (150, 660)), # pilas no cambiar el nombre
         ("accept call", (948, 478)), 
         ("voicemeter icon", (1678, 1060)),
-        ("A3", (2813, 838))
+        ("A3", (2813, 838)),
+        # Scroll down for intake form
+        ("dead point click", (2679, 1066)),
+        ("chrome", (200, 757)),
+        ("inside again", (150, 660)),
+        ("dead point chrome", (773, 178)),
     ]
 
     for nombre, (x, y) in pasos:
@@ -113,6 +126,8 @@ def taking_call_video():
             time.sleep(0.1)
             pyautogui.hotkey('ctrl', '5')
             print("Ctrl + 5 ejecutado")
+    # Haciendo scroll hacia abajo...
+    pyautogui.scroll(-200)
 
 def intro_ESP():
     pasos = [
