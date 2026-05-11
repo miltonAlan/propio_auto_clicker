@@ -47,8 +47,7 @@ def taking_call_audio():
         # 👉 Ejecutar Ctrl + 5 cuando dentro de chrome
         if nombre == "inside":
             time.sleep(0.1)
-            pyautogui.hotkey('ctrl', '5')
-            print("Ctrl + 5 ejecutado")
+            pyautogui.hotkey('ctrl', '4')
 
         # 👉 Presionar SPACE para reproducir greeting
         if nombre == "ENG":
@@ -77,8 +76,7 @@ def dial_out():
         # 👉 Ejecutar Ctrl + 5 cuando dentro de chrome
         if nombre == "inside":
             time.sleep(0.1)
-            pyautogui.hotkey('ctrl', '5')
-            print("Ctrl + 5 ejecutado")
+            pyautogui.hotkey('ctrl', '4')
 
         if nombre == "text box":
             time.sleep(0.5)
@@ -124,8 +122,7 @@ def taking_call_video():
         # 👉 Ejecutar Ctrl + 5 cuando dentro de chrome
         if nombre == "inside":
             time.sleep(0.1)
-            pyautogui.hotkey('ctrl', '5')
-            print("Ctrl + 5 ejecutado")
+            pyautogui.hotkey('ctrl', '4')
     # Haciendo scroll hacia abajo...
     pyautogui.scroll(-200)
 
@@ -241,8 +238,7 @@ def close_call_audio():
         # 👉 Ejecutar Ctrl + 5 cuando dentro de chrome
         if nombre == "inside":
             time.sleep(0.1)
-            pyautogui.hotkey('ctrl', '5')
-            print("Ctrl + 5 ejecutado")
+            pyautogui.hotkey('ctrl', '4')
         if nombre == "END":
             # time.sleep(0.1)
             print("Haciendo scroll hacia abajo...")
@@ -273,7 +269,6 @@ def close_call_video():
         if nombre == "inside":
             time.sleep(0.1)
             pyautogui.hotkey('ctrl', '5')
-            print("Ctrl + 5 ejecutado")
 
 def deepL():
     pasos = [
