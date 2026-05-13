@@ -16,7 +16,7 @@ def taking_notes():
         pyautogui.moveTo(x, y)
         pyautogui.click()
         print(f"Click en {nombre} -> ({x}, {y})")
-        time.sleep(0.1)
+        # time.sleep(0.1)
         # 🔽 Scroll hacia abajo d-espués de la secuencia
     print("Haciendo scroll hacia abajo...")
     pyautogui.scroll(-600)
@@ -96,7 +96,21 @@ def mute_unmute():
         pyautogui.moveTo(x, y)
         pyautogui.click()
         print(f"Click en {nombre} -> ({x}, {y})")
-        time.sleep(0.5)       
+        # time.sleep(0.5)       
+
+def jabra_on_off():
+    pasos = [
+        ("dead point click", (2679, 1066)),
+        ("voicemeter icon", (1678, 1060)),        
+        ("A3 jabra", (2821, 841)),
+    ]
+
+    for nombre, (x, y) in pasos:
+        pyautogui.moveTo(x, y)
+        pyautogui.click()
+        print(f"Click en {nombre} -> ({x}, {y})")
+        # time.sleep(0.1)       
+
 
 def taking_call_video():
     pasos = [
@@ -175,10 +189,10 @@ def volume_up():
         pyautogui.moveTo(x, y)
         pyautogui.click()
         print(f"Click en {nombre} -> ({x}, {y})")
-        time.sleep(0.1)
+        # time.sleep(0.1)
 
     pyautogui.scroll(1)
-    print("volume up")        
+    # print("volume up")        
 
 def volume_down():
     pasos = [
@@ -191,10 +205,10 @@ def volume_down():
         pyautogui.moveTo(x, y)
         pyautogui.click()
         print(f"Click en {nombre} -> ({x}, {y})")
-        time.sleep(0.1)
+        # time.sleep(0.1)
 
     pyautogui.scroll(-1)
-    print("volume down")   
+    # print("volume down")   
 
 def edge():
     pasos = [
@@ -268,7 +282,7 @@ def close_call_video():
         # 👉 Ejecutar Ctrl + 5 cuando dentro de chrome
         if nombre == "inside":
             time.sleep(0.1)
-            pyautogui.hotkey('ctrl', '5')
+            pyautogui.hotkey('ctrl', '4')
 
 def deepL():
     pasos = [
@@ -330,7 +344,10 @@ def on_press(key):
             print("Se presionó ]")   
         if key.char == '[':
             hold_time()
-            print("Se presionó [")                        
+            print("Se presionó [")      
+        if key.char == "'":
+            jabra_on_off()
+            print("Se presionó '")                              
     except Exception as e:
         print(e)
 

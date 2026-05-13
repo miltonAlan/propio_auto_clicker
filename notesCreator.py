@@ -1,6 +1,6 @@
 import argparse
 
-def create_sql_file(filename="propio.sql", total_lines=10000):
+def create_sql_file(filename="propio.sql", total_lines=50000):
     if total_lines < 2:
         raise ValueError("El archivo debe tener al menos 2 líneas para /* y */")
 
@@ -20,7 +20,7 @@ def create_sql_file(filename="propio.sql", total_lines=10000):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Genera un archivo SQL completamente comentado con líneas vacías")
     parser.add_argument("--file", default="propio.sql", help="Nombre del archivo")
-    parser.add_argument("--lines", type=int, default=10000, help="Número total de líneas")
+    parser.add_argument("--lines", type=int, default=50000, help="Número total de líneas")
 
     args = parser.parse_args()
 
