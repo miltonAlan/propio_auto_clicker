@@ -111,7 +111,6 @@ def jabra_on_off():
         print(f"Click en {nombre} -> ({x}, {y})")
         # time.sleep(0.1)       
 
-
 def taking_call_video():
     pasos = [
         ("dead point click", (2679, 1066)),
@@ -228,7 +227,6 @@ def hold_time():
     hora_actual = datetime.now().strftime("%H:%M:%S")
     pyautogui.write(hora_actual)
 
-
 def close_call_audio():
     pasos = [
         ("dead point click", (2679, 1066)),
@@ -288,7 +286,7 @@ def deepL():
     pasos = [
         ("dead point click", (2679, 1066)),
         ("edge", (1531, 1063)),
-        ("dead point inside edge", (2376, 1031)),
+        ("dead point inside edge", (2402, 1024)),
         ("3x click", (2376, 1031)),
     ]
 
@@ -299,7 +297,7 @@ def deepL():
             pyautogui.mouseDown(button='left')  # mantiene presionado
 
             # mover SIN soltar el click
-            pyautogui.moveRel(0, -525, duration=0.2)
+            pyautogui.moveRel(0, -500, duration=0.2)
             pyautogui.moveRel(-875, 0, duration=0.2)
 
             pyautogui.mouseUp(button='left')  # suelta recién al final
