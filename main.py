@@ -287,19 +287,45 @@ def close_call_video():
 def deepL():
     pasos = [
         ("dead point click", (2679, 1066)),
-        ("edge", (1531, 1063)),     
-        ("3x click", (2376, 1031)), 
-        ("3x click", (2376, 1031)), 
-        ("3x click", (2376, 1031)), 
-        ("deepL", (1615, 1031))
+        ("edge", (1531, 1063)),
+        ("dead point inside edge", (2376, 1031)),
+        ("3x click", (2376, 1031)),
     ]
 
     for nombre, (x, y) in pasos:
         pyautogui.moveTo(x, y)
-        pyautogui.click()
-        print(f"Click en {nombre} -> ({x}, {y})")
-        time.sleep(0.1)          
 
+        if nombre == "3x click":
+            pyautogui.mouseDown(button='left')  # mantiene presionado
+
+            # mover SIN soltar el click
+            pyautogui.moveRel(0, -525, duration=0.2)
+            pyautogui.moveRel(-875, 0, duration=0.2)
+
+            pyautogui.mouseUp(button='left')  # suelta recién al final
+
+            print(f"Drag en {nombre} -> ({x}, {y})")
+
+        else:
+            pyautogui.click()
+            print(f"Click en {nombre} -> ({x}, {y})")
+
+        time.sleep(0.1)
+    pyautogui.hotkey('ctrl', 'l')
+    # pasos = [
+    #     ("dead point click", (2679, 1066)),
+    #     ("edge", (1531, 1063)),     
+    #     ("3x click", (2376, 1031)), 
+    #     ("3x click", (2376, 1031)), 
+    #     ("3x click", (2376, 1031)), 
+    #     ("deepL", (1615, 1031))
+    # ]
+
+    # for nombre, (x, y) in pasos:
+    #     pyautogui.moveTo(x, y)
+    #     pyautogui.click()
+    #     print(f"Click en {nombre} -> ({x}, {y})")
+    #     time.sleep(0.1)          
 
 def on_press(key):
     try:
