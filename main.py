@@ -67,6 +67,15 @@ def dial_out():
         ("text box", (151, 296)) # no cambiar
     ]
 
+    pyautogui.press('end')
+    time.sleep(0.1)
+
+    pyautogui.hotkey('shift', 'home')
+    time.sleep(0.1)
+
+    pyautogui.hotkey('ctrl', 'c')
+    time.sleep(0.1)
+
     for nombre, (x, y) in pasos:
         pyautogui.moveTo(x, y)
         pyautogui.click()

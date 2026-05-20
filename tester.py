@@ -1,45 +1,32 @@
-# PRUEBA DE SCROLL LOCK - múltiples métodos
+import psutil
 
-import keyboard as kb
-from pynput import keyboard as pynput_keyboard
+print("Procesos principales abiertos por el usuario:\n")
 
-print("Presiona Scroll Lock para probar...\n")
-
-# ===== MÉTODO 1: pynput =====
-def on_press(key):
+for proc in psutil.process_iter(['name']):
     try:
-        print(f"[pynput] key: {key}")
+        # Solo procesos con ventana visible
+        if proc.info['name']:
+            pid = proc.pid
 
-        if key == pynput_keyboard.Key.scroll_lock:
-            print("✅ pynput detectó Scroll Lock")
+            # Verificar si tiene ventana principal visible
+            import win32gui
+            import win32process
 
-    except Exception as e:
-        print(f"[pynput ERROR]: {e}")
+            def callback(hwnd, windows):
+                if win32gui.IsWindowVisible(hwnd):
+                    _, found_pid = win32process.GetWindowThreadProcessId(hwnd)
 
-listener = pynput_keyboard.Listener(on_press=on_press)
-listener.start()
+                    if found_pid == pid:
+                        title = win32gui.GetWindowText(hwnd)
 
+                        if title.strip():
+                            windows.append((proc.info['name'], pid, title))
 
-# ===== MÉTODO 2: keyboard (hotkey) =====
-kb.add_hotkey('scroll lock', lambda: print("✅ keyboard.add_hotkey detectó Scroll Lock"))
+            windows = []
+            win32gui.EnumWindows(callback, windows)
 
-# ===== MÉTODO 3: keyboard (evento directo) =====
-def on_event(e):
-    if e.name == 'scroll lock':
-        print("✅ keyboard event detectó Scroll Lock")
+            for w in windows:
+                print(w)
 
-kb.on_press(on_event)
-
-# ===== MÉTODO 4: variantes =====
-kb.add_hotkey('scrlk', lambda: print("✅ 'scrlk' funcionó"))
-kb.add_hotkey('scroll', lambda: print("✅ 'scroll' funcionó"))
-
-
-# 🔒 BLOQUEO REAL (esto evita que el script termine)
-print("\nEscuchando... (Ctrl + C para salir)\n")
-
-try:
-    while True:
-        kb.wait()  # espera eventos continuamente
-except KeyboardInterrupt:
-    print("\nSaliendo...")
+    except:
+        pass
