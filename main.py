@@ -67,6 +67,15 @@ def dial_out():
         ("text box", (151, 296)) # no cambiar
     ]
 
+    pyautogui.press('end')
+    time.sleep(0.1)
+
+    pyautogui.hotkey('shift', 'home')
+    time.sleep(0.1)
+
+    pyautogui.hotkey('ctrl', 'c')
+    time.sleep(0.1)
+
     for nombre, (x, y) in pasos:
         pyautogui.moveTo(x, y)
         pyautogui.click()
@@ -297,7 +306,7 @@ def deepL():
             pyautogui.mouseDown(button='left')  # mantiene presionado
 
             # mover SIN soltar el click
-            pyautogui.moveRel(0, -500, duration=0.2)
+            pyautogui.moveRel(0, -250, duration=0.2)
             pyautogui.moveRel(-875, 0, duration=0.2)
 
             pyautogui.mouseUp(button='left')  # suelta recién al final
@@ -329,13 +338,15 @@ def on_press(key):
     try:
         if key == keyboard.Key.f2:
             print("\nF2 presionado → taking notes...")
-            taking_notes()
+            # taking_notes()
+            volume_up()
         if key == keyboard.Key.f3:
             print("\nF3 presionado → taking audio call...")
-            taking_call_audio()
+            # taking_call_audio()
+            volume_down()
         if key == keyboard.Key.f4:
-            print("\nF4 presionado → closing audio call...")
-            close_call_audio()
+            # close_call_audio()
+            dial_out()
         if key == keyboard.Key.f6:
             print("\nF6 presionado → intro ENG...")
             intro_ENG()
@@ -349,13 +360,12 @@ def on_press(key):
             print("\nF10 presionado → closing video call...")
             close_call_video()
         if key.char == '-':
-            volume_down()
-            print("Menos presionado")
+            close_call_audio()
         if key.char == '*':
-            volume_up()
+            taking_call_audio()
             print("Más presionado")
         if key.char == '/':
-            dial_out()
+            taking_notes()
             print("/ presionado")
         if key.char == '`' or key.char == '|':
             mute_unmute()
