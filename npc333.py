@@ -2,6 +2,7 @@ import time
 import random
 import pyautogui
 from datetime import datetime
+import subprocess
 
 # =========================================================
 # CONFIG
@@ -66,27 +67,22 @@ def tiempo_humano():
     else:
         return random.randint(1200, 2400)   # 20m - 40m
 
-
-# =========================================================
-# ABRIR EMULADOR
-# =========================================================
-
-log("abriendo emulador...")
-
-pyautogui.click(1000, 750)
-log("dead point")
-esperar(2, "esperando click emulador")
-pyautogui.click(721, 749)
-log("emulador")
-# esperar carga inicial
-esperar(60, "cargando emulador")
-
-
 # =========================================================
 # LOOP PRINCIPAL
 # =========================================================
 
 while True:
+
+    log("abriendo emulador...")
+
+    pyautogui.click(1000, 750)
+    log("dead point")
+    esperar(2, "esperando click emulador")
+    pyautogui.click(721, 749)
+    log("emulador")
+    # esperar carga inicial
+    esperar(60, "cargando emulador")
+
 
     log("nueva iteracion")
 
@@ -95,8 +91,8 @@ while True:
     log("dead point")    
     pyautogui.click(800, 208)
     log("long term")
-    # esperar(300, "long term activo")
-    esperar(15, "long term activo") # BORRAR
+    esperar(300, "long term activo")
+    #esperar(15, "long term activo") # BORRAR
 
     # abrir app
     pyautogui.click(1000, 750)
@@ -112,29 +108,13 @@ while True:
     log(f"uso humano simulado: {minutos} minutos")
 
     esperar(espera, "uso app")
+    # esperar(60, "uso app") # BORRAR
 
-    # volver al emulador
-    #pyautogui.click(1000, 750)
-    #log("dead point")
-    #esperar(2, "esperando emulador")
-    #pyautogui.click(721, 749)
-    #log("emulador")
+    # kill and start over
+    comando = 'taskkill /f /im "HD-Player.exe" /im "HD-MultiInstanceManager.exe"'
 
-    #esperar(5, "cargando emulador")
+    subprocess.run(comando, shell=True)
 
-    # detener long term
-    #pyautogui.click(1000, 750)
-    #log("dead point")    
-    #pyautogui.click(800, 208)
-    #log("long term STOP")
-
-    #esperar(5, "esperando")
-    #cerrar popup / ventana
-
-    #pyautogui.click(1000, 750)
-    #log("dead point")    
-    #pyautogui.click(830, 370)
-    #log("close button")
-
-
-    esperar(espera, "esperando siguiente ciclo")
+    #esperar(espera, "esperando siguiente ciclo")
+    # esperar(15, "esperando siguiente ciclo") # BORRAR
+    esperar(int(espera * 1.5), "esperando siguiente ciclo")
