@@ -77,7 +77,7 @@ while True:
 
     pyautogui.click(1000, 750)
     log("dead point")
-    esperar(2, "esperando click emulador")
+    esperar(60, "esperando click emulador")
     pyautogui.click(721, 749)
     log("emulador")
     # esperar carga inicial
@@ -99,6 +99,13 @@ while True:
     log("dead point")    
     pyautogui.click(760, 742)
     log("grindr")
+    esperar(15, "esperando grindr") 
+
+    # back to console
+    pyautogui.click(1000, 750)
+    log("dead point")    
+    pyautogui.click(650, 750)
+    esperar(15, "esperando CMD")
 
     # tiempo aleatorio humano
     espera = tiempo_humano()
