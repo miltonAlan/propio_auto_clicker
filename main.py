@@ -58,6 +58,24 @@ def taking_call_audio():
     # Haciendo scroll hacia abajo...
     pyautogui.scroll(-200)
 
+def back_to_portal():
+    pasos = [
+        ("dead point click", (2679, 1066)),
+        ("chrome", (200, 757)),
+        ("inside", (150, 660)), # pilas no cambiar el nombre
+    ]
+
+    for nombre, (x, y) in pasos:
+        pyautogui.moveTo(x, y)
+        pyautogui.click()
+        print(f"Click en {nombre} -> ({x}, {y})")
+        time.sleep(0.2)
+
+        # 👉 Ejecutar Ctrl + 5 cuando dentro de chrome
+        if nombre == "inside":
+            time.sleep(0.1)
+            pyautogui.hotkey('ctrl', '4')
+
 def dial_out():
     pasos = [
         ("dead point click", (2679, 1066)),
@@ -267,6 +285,47 @@ def close_call_audio():
             pyautogui.scroll(-2500)
             time.sleep(0.1)
 
+def close_call_audio_with_audio():
+    pasos = [
+        # my pleasure audio
+        ("dead point click", (2679, 1066)),
+        ("Brave", (1600, 1067)),
+        ("PLEASURE", (2260, 240)),
+
+        ("dead point click", (2679, 1066)),
+        ("voicemeter icon", (1678, 1060)),
+        ("A3", (2813, 838)),
+        ("chrome", (200, 757)),
+        ("inside", (150, 660)), # pilas no cambiar el nombre
+        ("hang up button", (200, 450)), 
+        ("END", (944, 487)), # pilas no cambiar el nombre
+        ("successfully", (422, 210)),
+        ("save n close", (1236,650)),
+        ("save n close x2", (1135,493))
+    ]
+
+    for nombre, (x, y) in pasos:
+        pyautogui.moveTo(x, y)
+        pyautogui.click()
+        print(f"Click en {nombre} -> ({x}, {y})")
+        time.sleep(0.2)
+
+        # 👉 Presionar SPACE para reproducir
+        if nombre == "PLEASURE":
+            pyautogui.press('space')
+            time.sleep(5)
+
+        # 👉 Ejecutar Ctrl + 5 cuando dentro de chrome
+        if nombre == "inside":
+            time.sleep(0.1)
+            pyautogui.hotkey('ctrl', '4')
+        if nombre == "END":
+            # time.sleep(0.1)
+            print("Haciendo scroll hacia abajo...")
+            pyautogui.scroll(-2500)
+            pyautogui.scroll(-2500)
+            time.sleep(0.1)
+
 def close_call_video():
     pasos = [
         ("dead point click", (2679, 1066)),
@@ -337,51 +396,39 @@ def deepL():
 def on_press(key):
     try:
         if key == keyboard.Key.f2:
-            print("\nF2 presionado → taking notes...")
-            # taking_notes()
             volume_up()
         if key == keyboard.Key.f3:
-            print("\nF3 presionado → taking audio call...")
-            # taking_call_audio()
             volume_down()
         if key == keyboard.Key.f4:
-            # close_call_audio()
+            taking_notes()  
+        if key == keyboard.Key.scroll_lock:
             dial_out()
+        if key == keyboard.Key.page_down:
+            back_to_portal()
         if key == keyboard.Key.f6:
-            print("\nF6 presionado → intro ENG...")
             intro_ENG()
         if key == keyboard.Key.f8:
-            print("\nF8 presionado → intro ESP...")
             intro_ESP()
         if key == keyboard.Key.f9:
-            print("\nF9 presionado → taking video call...")
             taking_call_video()
         if key == keyboard.Key.f10:
-            print("\nF10 presionado → closing video call...")
             close_call_video()
+        if key == keyboard.Key.print_screen:
+            close_call_audio_with_audio()
         if key.char == '-':
             close_call_audio()
         if key.char == '*':
             taking_call_audio()
-            print("Más presionado")
-        if key.char == '/':
-            taking_notes()
-            print("/ presionado")
         if key.char == '`' or key.char == '|':
             mute_unmute()
-            print("Se presionó ` o |")        
         if key.char == ';':
             edge()
-            print("Se presionó ;")
         if key.char == ']':
             deepL()
-            print("Se presionó ]")   
         if key.char == '[':
             hold_time()
-            print("Se presionó [")      
         if key.char == "'":
             jabra_on_off()
-            print("Se presionó '")                              
     except Exception as e:
         print(e)
 
