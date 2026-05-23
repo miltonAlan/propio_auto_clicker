@@ -77,13 +77,11 @@ while True:
 
     pyautogui.click(1000, 750)
     log("dead point")
-    esperar(2, "esperando click emulador")
+    esperar(100, "esperando click emulador")
     pyautogui.click(721, 749)
     log("emulador")
     # esperar carga inicial
     esperar(60, "cargando emulador")
-
-
     log("nueva iteracion")
 
     # abrir long term
@@ -112,9 +110,8 @@ while True:
 
     # kill and start over
     comando = 'taskkill /f /im "HD-Player.exe" /im "HD-MultiInstanceManager.exe"'
-
     subprocess.run(comando, shell=True)
 
-    #esperar(espera, "esperando siguiente ciclo")
     # esperar(15, "esperando siguiente ciclo") # BORRAR
-    esperar(int(espera * 1.8), "esperando siguiente ciclo")
+    log(f"esperando siguiente ciclo: {int(espera * 2.1)} minutos")
+    esperar(int(espera * 2.1), "esperando siguiente ciclo");
