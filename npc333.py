@@ -53,20 +53,20 @@ def tiempo_humano():
 
     # Madrugada
     if 0 <= hora < 6:
-        return random.randint(2400, 3600)   # 40m - 1h
+        return random.randint(1440, 2160)   # 24m - 36m
 
     # Mañana
     elif 6 <= hora < 12:
-        return random.randint(2700, 3600)   # 45m - 1h
+        return random.randint(1620, 2160)   # 27m - 36m
 
     # Tarde
     elif 12 <= hora < 19:
-        return random.randint(1800, 3000)   # 30m - 50m
+        return random.randint(1080, 1800)   # 18m - 30m
 
     # Noche (más activo)
     else:
-        return random.randint(1200, 2400)   # 20m - 40m
-
+        return random.randint(720, 1440)    # 12m - 24m
+    
 # =========================================================
 # LOOP PRINCIPAL
 # =========================================================
@@ -77,13 +77,11 @@ while True:
 
     pyautogui.click(1000, 750)
     log("dead point")
-    esperar(60, "esperando click emulador")
+    esperar(100, "esperando click emulador")
     pyautogui.click(721, 749)
     log("emulador")
     # esperar carga inicial
     esperar(60, "cargando emulador")
-
-
     log("nueva iteracion")
 
     # abrir long term
@@ -119,9 +117,8 @@ while True:
 
     # kill and start over
     comando = 'taskkill /f /im "HD-Player.exe" /im "HD-MultiInstanceManager.exe"'
-
     subprocess.run(comando, shell=True)
 
-    #esperar(espera, "esperando siguiente ciclo")
     # esperar(15, "esperando siguiente ciclo") # BORRAR
-    esperar(int(espera * 1.5), "esperando siguiente ciclo")
+    log(f"esperando siguiente ciclo: {int(espera * 2.1)} minutos")
+    esperar(int(espera * 2.1), "esperando siguiente ciclo");
