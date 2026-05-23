@@ -113,12 +113,11 @@ while True:
     log(f"uso humano simulado: {minutos} minutos")
 
     esperar(espera, "uso app")
-    # esperar(60, "uso app") # BORRAR
+    #esperar(100, "uso app") # BORRAR
 
     # kill and start over
     comando = 'taskkill /f /im "HD-Player.exe" /im "HD-MultiInstanceManager.exe"'
     subprocess.run(comando, shell=True)
 
     # esperar(15, "esperando siguiente ciclo") # BORRAR
-    log(f"esperando siguiente ciclo: {int(espera * 2.1)} minutos")
     esperar(int(espera * 2.1), "esperando siguiente ciclo");
