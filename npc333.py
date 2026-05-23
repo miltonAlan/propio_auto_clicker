@@ -53,20 +53,20 @@ def tiempo_humano():
 
     # Madrugada
     if 0 <= hora < 6:
-        return random.randint(2400, 3600)   # 40m - 1h
+        return random.randint(1440, 2160)   # 24m - 36m
 
     # Mañana
     elif 6 <= hora < 12:
-        return random.randint(2700, 3600)   # 45m - 1h
+        return random.randint(1620, 2160)   # 27m - 36m
 
     # Tarde
     elif 12 <= hora < 19:
-        return random.randint(1800, 3000)   # 30m - 50m
+        return random.randint(1080, 1800)   # 18m - 30m
 
     # Noche (más activo)
     else:
-        return random.randint(1200, 2400)   # 20m - 40m
-
+        return random.randint(720, 1440)    # 12m - 24m
+    
 # =========================================================
 # LOOP PRINCIPAL
 # =========================================================
