@@ -117,4 +117,4 @@ while True:
 
     #esperar(espera, "esperando siguiente ciclo")
     # esperar(15, "esperando siguiente ciclo") # BORRAR
-    esperar(int(espera * 1.5), "esperando siguiente ciclo")
+    esperar(int(espera * 1.8), "esperando siguiente ciclo")
