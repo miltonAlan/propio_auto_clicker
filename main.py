@@ -42,7 +42,7 @@ def taking_call_audio():
         pyautogui.moveTo(x, y)
         pyautogui.click()
         print(f"Click en {nombre} -> ({x}, {y})")
-        time.sleep(0.5)
+        time.sleep(0.2)
 
         # 👉 Ejecutar Ctrl + 5 cuando dentro de chrome
         if nombre == "inside":
@@ -98,7 +98,7 @@ def dial_out():
         pyautogui.moveTo(x, y)
         pyautogui.click()
         print(f"Click en {nombre} -> ({x}, {y})")
-        time.sleep(0.5)
+        time.sleep(0.2)
 
         # 👉 Ejecutar Ctrl + 5 cuando dentro de chrome
         if nombre == "inside":
@@ -106,11 +106,44 @@ def dial_out():
             pyautogui.hotkey('ctrl', '4')
 
         if nombre == "text box":
-            time.sleep(0.5)
+            time.sleep(0.2)
             pyautogui.hotkey('ctrl', 'v')
             time.sleep(0.1)
             pyautogui.press('enter')
             print("placing a call")            
+
+def gpt():
+    pasos = [
+        ("dead point click", (2679, 1066)),
+        ("chrome", (200, 757)),
+        ("inside", (150, 660)), # pilas no cambiar el nombre
+        # ("dial out button", (162, 160)), 
+        # ("text box", (151, 296)) # no cambiar
+    ]
+
+    pyautogui.press('end')
+    time.sleep(0.1)
+
+    pyautogui.hotkey('shift', 'home')
+    time.sleep(0.1)
+
+    pyautogui.hotkey('ctrl', 'c')
+    time.sleep(0.1)
+
+    for nombre, (x, y) in pasos:
+        pyautogui.moveTo(x, y)
+        pyautogui.click()
+        print(f"Click en {nombre} -> ({x}, {y})")
+        time.sleep(0.1)
+
+        if nombre == "inside":
+            time.sleep(0.1)
+            pyautogui.hotkey('ctrl', '5')  
+            time.sleep(0.1)
+            pyautogui.hotkey('ctrl', 'v')
+            time.sleep(0.1)
+            pyautogui.press('enter')
+            time.sleep(0.1)
 
 def mute_unmute():
     pasos = [
@@ -157,7 +190,7 @@ def taking_call_video():
         pyautogui.moveTo(x, y)
         pyautogui.click()
         print(f"Click en {nombre} -> ({x}, {y})")
-        time.sleep(0.5)
+        time.sleep(0.2)
 
         # 👉 Ejecutar Ctrl + 5 cuando dentro de chrome
         if nombre == "inside":
@@ -177,7 +210,7 @@ def intro_ESP():
         pyautogui.moveTo(x, y)
         pyautogui.click()
         print(f"Click en {nombre} -> ({x}, {y})")
-        time.sleep(0.5)
+        time.sleep(0.2)
 
         # 👉 Presionar SPACE para reproducir greeting
         if nombre == "ESP":
@@ -196,7 +229,7 @@ def intro_ENG():
         pyautogui.moveTo(x, y)
         pyautogui.click()
         print(f"Click en {nombre} -> ({x}, {y})")
-        time.sleep(0.5)
+        time.sleep(0.2)
 
         # 👉 Presionar SPACE para reproducir greeting
         if nombre == "ENG":
@@ -272,7 +305,7 @@ def close_call_audio():
         pyautogui.moveTo(x, y)
         pyautogui.click()
         print(f"Click en {nombre} -> ({x}, {y})")
-        time.sleep(0.5)
+        time.sleep(0.2)
 
         # 👉 Ejecutar Ctrl + 5 cuando dentro de chrome
         if nombre == "inside":
@@ -343,7 +376,7 @@ def close_call_video():
         pyautogui.moveTo(x, y)
         pyautogui.click()
         print(f"Click en {nombre} -> ({x}, {y})")
-        time.sleep(0.5)
+        time.sleep(0.2)
 
         # 👉 Ejecutar Ctrl + 5 cuando dentro de chrome
         if nombre == "inside":
@@ -396,13 +429,19 @@ def deepL():
 def on_press(key):
     try:
         if key == keyboard.Key.f2:
-            volume_up()
+            # volume_up()
+            # gpt()
+            taking_call_video()
         if key == keyboard.Key.f3:
-            volume_down()
+            # volume_down()
+            # dial_out()
+            close_call_video()
+            print("Ctrl derecho presionado")
         if key == keyboard.Key.f4:
             taking_notes()  
-        if key == keyboard.Key.scroll_lock:
-            dial_out()
+        if key == keyboard.Key.print_screen:
+            # dial_out()
+            volume_up()
         if key == keyboard.Key.page_down:
             back_to_portal()
         if key == keyboard.Key.f6:
@@ -410,11 +449,13 @@ def on_press(key):
         if key == keyboard.Key.f8:
             intro_ESP()
         if key == keyboard.Key.f9:
-            taking_call_video()
+            # taking_call_video()
+            gpt()
         if key == keyboard.Key.f10:
-            close_call_video()
-        if key == keyboard.Key.print_screen:
-            close_call_audio_with_audio()
+            # close_call_video()
+            dial_out()
+        if key == keyboard.Key.scroll_lock:
+            volume_down()
         if key.char == '-':
             close_call_audio()
         if key.char == '*':
