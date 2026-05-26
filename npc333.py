@@ -97,6 +97,13 @@ while True:
     log("dead point")    
     pyautogui.click(760, 742)
     log("grindr")
+    esperar(15, "esperando grindr") 
+
+    # back to console
+    pyautogui.click(1000, 750)
+    log("dead point")    
+    pyautogui.click(650, 750)
+    esperar(15, "esperando CMD")
 
     # tiempo aleatorio humano
     espera = tiempo_humano()
@@ -106,12 +113,11 @@ while True:
     log(f"uso humano simulado: {minutos} minutos")
 
     esperar(espera, "uso app")
-    # esperar(60, "uso app") # BORRAR
+    #esperar(100, "uso app") # BORRAR
 
     # kill and start over
     comando = 'taskkill /f /im "HD-Player.exe" /im "HD-MultiInstanceManager.exe"'
     subprocess.run(comando, shell=True)
 
     # esperar(15, "esperando siguiente ciclo") # BORRAR
-    log(f"esperando siguiente ciclo: {int(espera * 2.1)} minutos")
     esperar(int(espera * 2.1), "esperando siguiente ciclo");
