@@ -4,27 +4,15 @@ import pyautogui
 from datetime import datetime
 import subprocess
 
-# =========================================================
-# CONFIG
-# =========================================================
-
-pyautogui.FAILSAFE = True
-
-# =========================================================
-# LOG
-# =========================================================
+# dejar en false sino se desactiva con el mouse en la esquina
+pyautogui.FAILSAFE = False
+DEBUG = True          # False = modo normal
+DEBUG_WAIT = 10        # segundos de espera en modo debug
 
 def log(msg):
     hora = datetime.now().strftime("%H:%M:%S")
     print(f"[{hora}] {msg}")
 
-
-# =========================================================
-# COUNTDOWN
-# =========================================================
-"""
-Muestra conteo regresivo en consola.
-"""
 
 def esperar(segundos, mensaje="esperando"):
 
@@ -42,10 +30,28 @@ def esperar(segundos, mensaje="esperando"):
 
     print()  # salto línea
 
+def formatear_duracion(segundos):
+    horas = segundos // 3600
+    minutos = (segundos % 3600) // 60
+    segundos_restantes = segundos % 60
 
-# =========================================================
-# TIEMPOS HUMANOS
-# =========================================================
+    if horas:
+        return f"{horas}h {minutos}m {segundos_restantes}s"
+    elif minutos:
+        return f"{minutos}m {segundos_restantes}s"
+    else:
+        return f"{segundos_restantes}s"
+
+def pausa(segundos, mensaje="esperando"):
+    if DEBUG:
+        log(
+            f"[DEBUG] Tiempo simulado: "
+            f"{formatear_duracion(segundos)} "
+            f"-> esperando solo {DEBUG_WAIT}s"
+        )
+        esperar(DEBUG_WAIT, f"[DEBUG] {mensaje}")
+    else:
+        esperar(segundos, mensaje)
 
 def tiempo_humano():
 
@@ -67,35 +73,58 @@ def tiempo_humano():
     else:
         return random.randint(720, 1440)    # 12m - 24m
     
-# =========================================================
-# LOOP PRINCIPAL
-# =========================================================
-
 while True:
 
     log("abriendo emulador...")
 
     pyautogui.click(1000, 750)
     log("dead point")
-    esperar(100, "esperando click emulador")
+    pausa(100, "esperando click emulador")
     pyautogui.click(721, 749)
     log("emulador")
     # esperar carga inicial
-    esperar(60, "cargando emulador")
+    pausa(60, "cargando emulador")
     log("nueva iteracion")
 
     # abrir long term
     pyautogui.click(1000, 750)
     log("dead point")    
-    pyautogui.click(800, 208)
+    pyautogui.click(775, 272)
     log("long term")
-    esperar(300, "long term activo")
-    #esperar(15, "long term activo") # BORRAR
+    pausa(300, "long term activo")
 
-    # abrir app
+    # long term window
     pyautogui.click(1000, 750)
     log("dead point")    
-    pyautogui.click(760, 742)
+    pyautogui.click(760, 750)
+    log("grindr")
+    pausa(15, "esperando ventana emulador") 
+
+    # home button
+    pyautogui.click(1000, 750)
+    log("dead point")    
+    pyautogui.click(392, 626)
+    log("grindr")
+    esperar(15, "esperando home button") 
+    
+    # maps button
+    pyautogui.click(1000, 750)
+    log("dead point")    
+    pyautogui.click(390, 500)
+    log("grindr")
+    pausa(100, "esperando maps page") 
+    
+    # home button
+    pyautogui.click(1000, 750)
+    log("dead point")    
+    pyautogui.click(392, 626)
+    log("grindr")
+    esperar(15, "esperando home button") 
+
+    # grindr icon
+    pyautogui.click(1000, 750)
+    log("dead point")    
+    pyautogui.click(300, 150)
     log("grindr")
     esperar(15, "esperando grindr") 
 
@@ -112,12 +141,16 @@ while True:
 
     log(f"uso humano simulado: {minutos} minutos")
 
-    esperar(espera, "uso app")
-    #esperar(100, "uso app") # BORRAR
+    pausa(espera, "uso app")
 
     # kill and start over
-    comando = 'taskkill /f /im "HD-Player.exe" /im "HD-MultiInstanceManager.exe"'
+    comando = 'taskkill /f /im "HD-Player.exe" /im "HD-MultiInstanceManager.exe" /im "AnyDesk.exe"'
     subprocess.run(comando, shell=True)
-
-    # esperar(15, "esperando siguiente ciclo") # BORRAR
-    esperar(int(espera * 2.1), "esperando siguiente ciclo");
+    
+    # get anydesk back
+    pyautogui.click(1000, 750)
+    log("dead point")    
+    pyautogui.click(610, 750)
+    esperar(15, "esperando anydesk")
+    
+    pausa(int(espera * 6), "esperando siguiente ciclo")
