@@ -185,7 +185,7 @@ def night_mode():
         pyautogui.click()
         # print(f"Click en {nombre} -> ({x}, {y})")
 
-    for _ in range(9): pyautogui.scroll(-1)
+    for _ in range(10): pyautogui.scroll(-1)
 
 def taking_call_video():
     pasos = [
@@ -436,8 +436,8 @@ def deepL():
             pyautogui.mouseDown(button='left')  # mantiene presionado
 
             # mover SIN soltar el click
-            pyautogui.moveRel(0, -250, duration=0.2)
-            pyautogui.moveRel(-900, 0, duration=0.2)
+            pyautogui.moveRel(0, -400, duration=0.2)
+            pyautogui.moveRel(-925, 0, duration=0.2)
 
             pyautogui.mouseUp(button='left')  # suelta recién al final
 
@@ -464,46 +464,85 @@ def deepL():
     #     print(f"Click en {nombre} -> ({x}, {y})")
     #     time.sleep(0.1)          
 
+def log(action):
+    print(f"[{datetime.now().strftime('%H:%M:%S')}] {action}")
+
 def on_press(key):
     try:
         if key == keyboard.Key.f2:
+            log("F2 - dial_out")
             dial_out()
+
         if key == keyboard.Key.f3:
+            log("F3 - taking_call_video")
             taking_call_video()
+
         if key == keyboard.Key.f4:
-            taking_notes()  
+            log("F4 - taking_notes")
+            taking_notes()
+
         if key == keyboard.Key.print_screen:
+            log("PrintScreen - volume_up")
             volume_up()
+
         if key == keyboard.Key.page_down:
+            log("PageDown - back_to_portal")
             back_to_portal()
+
         if key == keyboard.Key.page_up:
+            log("PageUp - night_mode")
             night_mode()
+
         if key == keyboard.Key.f6:
+            log("F6 - intro_ENG")
             intro_ENG()
+
         if key == keyboard.Key.f8:
+            log("F8 - intro_ESP")
             intro_ESP()
+
         if key == keyboard.Key.f9:
+            log("F9 - gpt")
             gpt()
+
         if key == keyboard.Key.f10:
+            log("F10 - close_call_video")
             close_call_video()
+
         if key == keyboard.Key.scroll_lock:
+            log("ScrollLock - volume_down")
             volume_down()
+
         if key.char == '-':
+            log("- - close_call_audio")
             close_call_audio()
+
         if key.char == '*':
+            log("* - taking_call_audio")
             taking_call_audio()
+
         if key.char == '`' or key.char == '|':
+            log("` or | - mute_unmute")
             mute_unmute()
+
         if key.char == ';':
+            log("; - edge")
             edge()
+
         if key.char == ']':
+            log("] - deepL")
             deepL()
+
         if key.char == '[':
+            log("[ - hold_time")
             hold_time()
+
         if key.char == "'":
+            log("' - jabra_on_off")
             jabra_on_off()
+
     except Exception as e:
-        print(e)
+        print(f"[{datetime.now().strftime('%H:%M:%S')}] ERROR: {e}")
 
 with keyboard.Listener(on_press=on_press) as listener:
     listener.join()
