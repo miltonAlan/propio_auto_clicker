@@ -53,7 +53,7 @@ def taking_call_audio():
             pyautogui.press('space')
             print("SPACE presionado")
 
-    time.sleep(1)       
+    time.sleep(3)       
     pyautogui.scroll(-200)
 
 def back_to_portal():
@@ -307,7 +307,7 @@ def edge():
     pasos = [
         ("dead point click", (2679, 1066)),
         ("edge", (1531, 1063)),        
-        ("dead point inside edge", (2402, 1024)),
+        ("dead point inside edge", (2402, 980)),
         # ("3x click", (2376, 1031))
     ]
 
@@ -426,7 +426,7 @@ def deepL():
     pasos = [
         ("dead point click", (2679, 1066)),
         ("edge", (1531, 1063)),
-        ("dead point inside edge", (2402, 1024)),
+        ("dead point inside edge", (2402, 980)),
         ("3x click", (2376, 1031)),
     ]
 
