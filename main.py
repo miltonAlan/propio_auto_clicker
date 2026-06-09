@@ -215,7 +215,7 @@ def taking_call_video():
             time.sleep(0.1)
             pyautogui.hotkey('ctrl', '4')
     # Haciendo scroll hacia abajo...
-    time.sleep(1)       
+    time.sleep(3)       
     pyautogui.scroll(-200)
 
 def intro_ESP():
@@ -543,7 +543,7 @@ def on_press(key):
             jabra_on_off()
 
     except Exception as e:
-        print(f"[{datetime.now().strftime('%H:%M:%S')}] ERROR: {e}")
+        print(e)
 
 with keyboard.Listener(on_press=on_press) as listener:
     listener.join()
