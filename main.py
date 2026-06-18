@@ -185,7 +185,7 @@ def night_mode():
         pyautogui.click()
         # print(f"Click en {nombre} -> ({x}, {y})")
 
-    for _ in range(10): pyautogui.scroll(-1)
+    for _ in range(12): pyautogui.scroll(-1)
 
 def taking_call_video():
     pasos = [
