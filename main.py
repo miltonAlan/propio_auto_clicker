@@ -54,7 +54,7 @@ def taking_call_audio():
             print("SPACE presionado")
 
     time.sleep(3)       
-    pyautogui.scroll(-200)
+    pyautogui.scroll(-250)
 
 def back_to_portal():
     pasos = [
