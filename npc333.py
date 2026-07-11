@@ -6,7 +6,7 @@ import subprocess
 
 # dejar en false sino se desactiva con el mouse en la esquina
 pyautogui.FAILSAFE = False
-DEBUG = True          # False = modo normal
+DEBUG = False          # False = modo normal
 DEBUG_WAIT = 10        # segundos de espera en modo debug
 
 def log(msg):
@@ -89,7 +89,7 @@ while True:
     # abrir long term
     pyautogui.click(1000, 750)
     log("dead point")    
-    pyautogui.click(775, 272)
+    pyautogui.click(790, 300)
     log("long term")
     pausa(300, "long term activo")
 
@@ -103,28 +103,14 @@ while True:
     # home button
     pyautogui.click(1000, 750)
     log("dead point")    
-    pyautogui.click(392, 626)
-    log("grindr")
-    esperar(15, "esperando home button") 
-    
-    # maps button
-    pyautogui.click(1000, 750)
-    log("dead point")    
-    pyautogui.click(390, 500)
-    log("grindr")
-    pausa(100, "esperando maps page") 
-    
-    # home button
-    pyautogui.click(1000, 750)
-    log("dead point")    
-    pyautogui.click(392, 626)
+    pyautogui.click(430, 660)
     log("grindr")
     esperar(15, "esperando home button") 
 
     # grindr icon
     pyautogui.click(1000, 750)
     log("dead point")    
-    pyautogui.click(300, 150)
+    pyautogui.click(330, 170)
     log("grindr")
     esperar(15, "esperando grindr") 
 
@@ -153,4 +139,10 @@ while True:
     pyautogui.click(610, 750)
     esperar(15, "esperando anydesk")
     
-    pausa(int(espera * 6), "esperando siguiente ciclo")
+    # back to console
+    pyautogui.click(1000, 750)
+    log("dead point")    
+    pyautogui.click(650, 750)
+    esperar(15, "esperando CMD")
+
+    pausa(int(espera * 9), "esperando siguiente ciclo")

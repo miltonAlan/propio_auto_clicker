@@ -1,0 +1,248 @@
+import pyautogui
+import pyperclip
+import pandas as pd
+import time
+from pynput import keyboard
+from datetime import datetime
+
+# copiar valor de dom # copy(parseFloat(document.querySelector(".result-multiplier").innerText))
+
+# Historial de datos
+historial = []
+
+# Rangos de distribución
+bins = [0, 1.5, 2, 3, 5, 10, 20, 50, 100]
+
+def bet():
+    pyautogui.moveTo(1025, 400)
+    pyautogui.click()
+
+def bet2():
+    pyautogui.moveTo(1250, 400)
+    pyautogui.click()
+
+
+
+def data_intake():
+    pasos = [
+        ("dead point click", (1020, 750)),
+        ("Chrome icon", (314, 750)),
+        #("Chrome aviator", (1680, 980)),
+        ("label: Apuestas", (1035, 428)),
+        ("label: Anterior", (1100, 428)),
+        ("dev tools", (1060, 730)),
+        #("dead point click", (1020, 750)),
+        # ("back to vscode", (500, 750)),
+       # ("Chrome icon", (314, 750)),
+        #("Chrome aviator", (1680, 980)),
+    ]
+
+    for nombre, (x, y) in pasos:
+        pyautogui.moveTo(x, y)
+        pyautogui.click()
+        # time.sleep(0.1)
+                
+        # Solo al entrar a DevTools
+        if nombre == "dev tools":
+            time.sleep(0.1)
+            pyautogui.press("up")
+            pyautogui.press("enter")
+            time.sleep(0.1)
+
+    pyautogui.moveTo(1025, 400)
+
+
+import pandas as pd
+from datetime import datetime
+
+
+def actualizar_distribucion():
+
+    if len(historial) == 0:
+        return
+
+
+    # ============================
+    # SOLO ULTIMAS 15 JUGADAS
+    # ============================
+
+    ultimas = historial[-10:]
+
+
+    df = pd.DataFrame(
+        ultimas,
+        columns=["multiplicador"]
+    )
+
+
+    total = len(df)
+
+
+
+    # ============================
+    # CLASIFICACION
+    # ============================
+
+    menores2 = (
+        df["multiplicador"] < 2
+    ).sum()
+
+
+    mayores2 = (
+        df["multiplicador"] >= 2
+    ).sum()
+
+
+    grandes = (
+        df["multiplicador"] >= 10
+    ).sum()
+
+
+
+    probMenor = menores2 / total * 100
+
+    probMayor = mayores2 / total * 100
+
+    probBig = grandes / total * 100
+
+
+
+    # ============================
+    # RACHA ACTUAL BAJA
+    # ============================
+
+    racha_baja = 0
+
+    for valor in reversed(historial):
+
+        if valor < 2:
+            racha_baja += 1
+        else:
+            break
+
+
+
+    # ============================
+    # INDICE DE POSIBLE BIG
+    # ============================
+    # Esto NO predice Aviator.
+    # Solo mide saturacion de bajas.
+
+    indice_big = 0
+
+
+    if racha_baja >= 5:
+        indice_big += 20
+
+    if probMenor >= 70:
+        indice_big += 20
+
+    if probBig < 10:
+        indice_big += 20
+
+    if mayores2 < menores2:
+        indice_big += 20
+
+
+    if indice_big > 70:
+        señal = "🟢 ZONA ESTADISTICA INTERESANTE"
+    
+    elif indice_big > 40:
+        señal = "🟡 POSIBLE CAMBIO DE DISTRIBUCION"
+
+    else:
+        señal = "🔴 SIN INDICIOS"
+
+
+
+    # ============================
+    # RESULTADO
+    # ============================
+
+
+    print("\n" + "="*60)
+
+    print(
+        f"Ultimas {total} jugadas:"
+    )
+
+    print(ultimas)
+
+
+    print("\nDISTRIBUCION:")
+
+    print(
+        f"<2x     : {probMenor:.2f}%"
+    )
+
+    print(
+        f">=2x    : {probMayor:.2f}%"
+    )
+
+    print(
+        f"BIG 10x+: {probBig:.2f}%"
+    )
+
+
+    print("\nANALISIS:")
+
+    print(
+        f"Racha actual <2x: {racha_baja}"
+    )
+
+
+    print(
+        f"Indice BIG: {indice_big}%"
+    )
+
+
+    print(
+        "Señal:",
+        señal
+    )
+
+
+    print("="*60)
+
+
+
+def log(action):
+
+    print(
+        f"[{datetime.now().strftime('%H:%M:%S')}] {action}"
+    )
+
+
+def on_press(key):
+
+    try:
+
+        if key == keyboard.KeyCode.from_char('x'):
+            bet()
+    
+        if key == keyboard.KeyCode.from_char('c'):
+            bet2()
+
+        if key == keyboard.KeyCode.from_char('z'):
+            data_intake()
+            texto = pyperclip.paste()
+            try:
+
+                valor = float(texto)
+
+                historial.append(valor)
+
+                print(f"Nuevo dato: {valor}")
+
+                actualizar_distribucion()
+
+            except:
+
+                print("No se pudo convertir:", texto)
+
+    except Exception as e:
+        print(e)
+
+
+with keyboard.Listener(on_press=on_press) as listener:
+    listener.join()
