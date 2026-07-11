@@ -3,7 +3,7 @@ myGui2 := 0
 screenColor := "Black"
 
 ; === PrintScreen: Toggle (encender/apagar ambas pantallas) ===
-PrintScreen:: {
+RControl:: {
     global myGui1, myGui2, screenColor
 
     ; Si ya están activas → apagar

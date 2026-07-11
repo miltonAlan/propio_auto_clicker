@@ -15,10 +15,7 @@ def taking_notes():
     for nombre, (x, y) in pasos:
         pyautogui.moveTo(x, y)
         pyautogui.click()
-        print(f"Click en {nombre} -> ({x}, {y})")
-        # time.sleep(0.1)
-        # 🔽 Scroll hacia abajo d-espués de la secuencia
-    print("Haciendo scroll hacia abajo...")
+    
     pyautogui.scroll(-600)
 
 def taking_call_audio():
@@ -37,14 +34,15 @@ def taking_call_audio():
         ("inside again", (150, 660)),
         ("dead point chrome", (773, 178)),
     ]
+    
+    reset_volume()
 
     for nombre, (x, y) in pasos:
         pyautogui.moveTo(x, y)
         pyautogui.click()
-        print(f"Click en {nombre} -> ({x}, {y})")
+        # print(f"Click en {nombre} -> ({x}, {y})")
         time.sleep(0.2)
 
-        # 👉 Ejecutar Ctrl + 5 cuando dentro de chrome
         if nombre == "inside":
             time.sleep(0.1)
             pyautogui.hotkey('ctrl', '4')
@@ -55,8 +53,8 @@ def taking_call_audio():
             pyautogui.press('space')
             print("SPACE presionado")
 
-    # Haciendo scroll hacia abajo...
-    pyautogui.scroll(-200)
+    time.sleep(3)       
+    pyautogui.scroll(-250)
 
 def back_to_portal():
     pasos = [
@@ -68,7 +66,7 @@ def back_to_portal():
     for nombre, (x, y) in pasos:
         pyautogui.moveTo(x, y)
         pyautogui.click()
-        print(f"Click en {nombre} -> ({x}, {y})")
+        # print(f"Click en {nombre} -> ({x}, {y})")
         time.sleep(0.2)
 
         # 👉 Ejecutar Ctrl + 5 cuando dentro de chrome
@@ -97,7 +95,7 @@ def dial_out():
     for nombre, (x, y) in pasos:
         pyautogui.moveTo(x, y)
         pyautogui.click()
-        print(f"Click en {nombre} -> ({x}, {y})")
+        # print(f"Click en {nombre} -> ({x}, {y})")
         time.sleep(0.2)
 
         # 👉 Ejecutar Ctrl + 5 cuando dentro de chrome
@@ -133,7 +131,7 @@ def gpt():
     for nombre, (x, y) in pasos:
         pyautogui.moveTo(x, y)
         pyautogui.click()
-        print(f"Click en {nombre} -> ({x}, {y})")
+        # print(f"Click en {nombre} -> ({x}, {y})")
         time.sleep(0.1)
 
         if nombre == "inside":
@@ -155,7 +153,7 @@ def mute_unmute():
     for nombre, (x, y) in pasos:
         pyautogui.moveTo(x, y)
         pyautogui.click()
-        print(f"Click en {nombre} -> ({x}, {y})")
+        # print(f"Click en {nombre} -> ({x}, {y})")
         # time.sleep(0.5)       
 
 def jabra_on_off():
@@ -168,8 +166,26 @@ def jabra_on_off():
     for nombre, (x, y) in pasos:
         pyautogui.moveTo(x, y)
         pyautogui.click()
-        print(f"Click en {nombre} -> ({x}, {y})")
-        # time.sleep(0.1)       
+        # print(f"Click en {nombre} -> ({x}, {y})")
+
+def night_mode():
+    pasos = [
+        ("dead point click", (2679, 1066)),
+        ("voicemeter icon", (1678, 1060)),
+        # 3x para resetear
+        ("volume bar", (2765, 844)),        
+        ("volume bar", (2765, 844)),        
+        ("volume bar", (2765, 844)),        
+    ]
+
+    jabra_on_off()
+
+    for nombre, (x, y) in pasos:
+        pyautogui.moveTo(x, y)
+        pyautogui.click()
+        # print(f"Click en {nombre} -> ({x}, {y})")
+
+    for _ in range(12): pyautogui.scroll(-1)
 
 def taking_call_video():
     pasos = [
@@ -186,10 +202,12 @@ def taking_call_video():
         ("dead point chrome", (773, 178)),
     ]
 
+    reset_volume()  # Asegura que el volumen esté en un nivel conocido antes de empezar     
+
     for nombre, (x, y) in pasos:
         pyautogui.moveTo(x, y)
         pyautogui.click()
-        print(f"Click en {nombre} -> ({x}, {y})")
+        # print(f"Click en {nombre} -> ({x}, {y})")
         time.sleep(0.2)
 
         # 👉 Ejecutar Ctrl + 5 cuando dentro de chrome
@@ -197,6 +215,7 @@ def taking_call_video():
             time.sleep(0.1)
             pyautogui.hotkey('ctrl', '4')
     # Haciendo scroll hacia abajo...
+    time.sleep(3)       
     pyautogui.scroll(-200)
 
 def intro_ESP():
@@ -209,7 +228,7 @@ def intro_ESP():
     for nombre, (x, y) in pasos:
         pyautogui.moveTo(x, y)
         pyautogui.click()
-        print(f"Click en {nombre} -> ({x}, {y})")
+        # print(f"Click en {nombre} -> ({x}, {y})")
         time.sleep(0.2)
 
         # 👉 Presionar SPACE para reproducir greeting
@@ -228,7 +247,7 @@ def intro_ENG():
     for nombre, (x, y) in pasos:
         pyautogui.moveTo(x, y)
         pyautogui.click()
-        print(f"Click en {nombre} -> ({x}, {y})")
+        # print(f"Click en {nombre} -> ({x}, {y})")
         time.sleep(0.2)
 
         # 👉 Presionar SPACE para reproducir greeting
@@ -247,11 +266,26 @@ def volume_up():
     for nombre, (x, y) in pasos:
         pyautogui.moveTo(x, y)
         pyautogui.click()
-        print(f"Click en {nombre} -> ({x}, {y})")
+        # print(f"Click en {nombre} -> ({x}, {y})")
         # time.sleep(0.1)
 
     pyautogui.scroll(1)
-    # print("volume up")        
+
+def reset_volume():
+    pasos = [
+        ("dead point click", (2679, 1066)),
+        ("voicemeter icon", (1678, 1060)),        
+        ("volume bar", (2765, 844)),
+        ("volume bar", (2765, 844)),
+        ("volume bar", (2765, 844)),]
+
+    for nombre, (x, y) in pasos:
+        pyautogui.moveTo(x, y)
+        pyautogui.click()
+        # print(f"Click en {nombre} -> ({x}, {y})")
+    
+    pyautogui.scroll(-1)
+    # pyautogui.scroll(-1)
 
 def volume_down():
     pasos = [
@@ -263,7 +297,7 @@ def volume_down():
     for nombre, (x, y) in pasos:
         pyautogui.moveTo(x, y)
         pyautogui.click()
-        print(f"Click en {nombre} -> ({x}, {y})")
+        # print(f"Click en {nombre} -> ({x}, {y})")
         # time.sleep(0.1)
 
     pyautogui.scroll(-1)
@@ -273,13 +307,14 @@ def edge():
     pasos = [
         ("dead point click", (2679, 1066)),
         ("edge", (1531, 1063)),        
-        ("3x click", (2376, 1031))
+        ("dead point inside edge", (2402, 980)),
+        # ("3x click", (2376, 1031))
     ]
 
     for nombre, (x, y) in pasos:
         pyautogui.moveTo(x, y)
         pyautogui.click()
-        print(f"Click en {nombre} -> ({x}, {y})")
+        # print(f"Click en {nombre} -> ({x}, {y})")
         time.sleep(0.1)
 
 def hold_time():
@@ -304,7 +339,7 @@ def close_call_audio():
     for nombre, (x, y) in pasos:
         pyautogui.moveTo(x, y)
         pyautogui.click()
-        print(f"Click en {nombre} -> ({x}, {y})")
+        # print(f"Click en {nombre} -> ({x}, {y})")
         time.sleep(0.2)
 
         # 👉 Ejecutar Ctrl + 5 cuando dentro de chrome
@@ -317,6 +352,8 @@ def close_call_audio():
             pyautogui.scroll(-2500)
             pyautogui.scroll(-2500)
             time.sleep(0.1)
+
+    # reset_volume()
 
 def close_call_audio_with_audio():
     pasos = [
@@ -340,7 +377,7 @@ def close_call_audio_with_audio():
     for nombre, (x, y) in pasos:
         pyautogui.moveTo(x, y)
         pyautogui.click()
-        print(f"Click en {nombre} -> ({x}, {y})")
+        # print(f"Click en {nombre} -> ({x}, {y})")
         time.sleep(0.2)
 
         # 👉 Presionar SPACE para reproducir
@@ -375,7 +412,7 @@ def close_call_video():
     for nombre, (x, y) in pasos:
         pyautogui.moveTo(x, y)
         pyautogui.click()
-        print(f"Click en {nombre} -> ({x}, {y})")
+        # print(f"Click en {nombre} -> ({x}, {y})")
         time.sleep(0.2)
 
         # 👉 Ejecutar Ctrl + 5 cuando dentro de chrome
@@ -383,11 +420,13 @@ def close_call_video():
             time.sleep(0.1)
             pyautogui.hotkey('ctrl', '4')
 
+    # reset_volume()
+
 def deepL():
     pasos = [
         ("dead point click", (2679, 1066)),
         ("edge", (1531, 1063)),
-        ("dead point inside edge", (2402, 1024)),
+        ("dead point inside edge", (2402, 980)),
         ("3x click", (2376, 1031)),
     ]
 
@@ -398,8 +437,8 @@ def deepL():
             pyautogui.mouseDown(button='left')  # mantiene presionado
 
             # mover SIN soltar el click
-            pyautogui.moveRel(0, -250, duration=0.2)
-            pyautogui.moveRel(-875, 0, duration=0.2)
+            pyautogui.moveRel(0, -400, duration=0.2)
+            pyautogui.moveRel(-925, 0, duration=0.2)
 
             pyautogui.mouseUp(button='left')  # suelta recién al final
 
@@ -426,50 +465,83 @@ def deepL():
     #     print(f"Click en {nombre} -> ({x}, {y})")
     #     time.sleep(0.1)          
 
+def log(action):
+    print(f"[{datetime.now().strftime('%H:%M:%S')}] {action}")
+
 def on_press(key):
     try:
         if key == keyboard.Key.f2:
-            # volume_up()
-            # gpt()
-            taking_call_video()
-        if key == keyboard.Key.f3:
-            # volume_down()
-            # dial_out()
-            close_call_video()
-            print("Ctrl derecho presionado")
-        if key == keyboard.Key.f4:
-            taking_notes()  
-        if key == keyboard.Key.print_screen:
-            # dial_out()
-            volume_up()
-        if key == keyboard.Key.page_down:
-            back_to_portal()
-        if key == keyboard.Key.f6:
-            intro_ENG()
-        if key == keyboard.Key.f8:
-            intro_ESP()
-        if key == keyboard.Key.f9:
-            # taking_call_video()
-            gpt()
-        if key == keyboard.Key.f10:
-            # close_call_video()
+            log("F2 - dial_out")
             dial_out()
+
+        if key == keyboard.Key.f3:
+            log("F3 - taking_call_video")
+            taking_call_video()
+
+        if key == keyboard.Key.f4:
+            log("F4 - taking_notes")
+            taking_notes()
+
+        if key == keyboard.Key.print_screen:
+            log("PrintScreen - volume_up")
+            volume_up()
+
+        if key == keyboard.Key.page_down:
+            log("PageDown - back_to_portal")
+            back_to_portal()
+
+        if key == keyboard.Key.page_up:
+            log("PageUp - night_mode")
+            night_mode()
+
+        if key == keyboard.Key.f6:
+            log("F6 - intro_ENG")
+            intro_ENG()
+
+        if key == keyboard.Key.f8:
+            log("F8 - intro_ESP")
+            intro_ESP()
+
+        if key == keyboard.Key.f9:
+            log("F9 - gpt")
+            gpt()
+
+        if key == keyboard.Key.f10:
+            log("F10 - close_call_video")
+            close_call_video()
+
         if key == keyboard.Key.scroll_lock:
+            log("ScrollLock - volume_down")
             volume_down()
+
         if key.char == '-':
+            log("- - close_call_audio")
             close_call_audio()
+
         if key.char == '*':
+            log("* - taking_call_audio")
             taking_call_audio()
+
         if key.char == '`' or key.char == '|':
+            log("` or | - mute_unmute")
             mute_unmute()
+
         if key.char == ';':
+            log("; - edge")
             edge()
+
         if key.char == ']':
+            log("] - deepL")
             deepL()
+
         if key.char == '[':
+            log("[ - hold_time")
             hold_time()
+
         if key.char == "'":
+            log("' - jabra_on_off")
             jabra_on_off()
+
     except Exception as e:
         print(e)
 
