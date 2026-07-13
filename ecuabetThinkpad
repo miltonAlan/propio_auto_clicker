@@ -9,7 +9,7 @@ from datetime import datetime
 
 # Historial de datos
 historial = []
-
+historial_distribucion = []
 # Rangos de distribución
 bins = [0, 1.5, 2, 3, 5, 10, 20, 50, 100]
 
@@ -61,7 +61,6 @@ def actualizar_distribucion():
     if len(historial) == 0:
         return
 
-
     # ============================
     # SOLO ULTIMAS 15 JUGADAS
     # ============================
@@ -105,8 +104,27 @@ def actualizar_distribucion():
 
     probBig = grandes / total * 100
 
+    # ============================
+    # GUARDAR DISTRIBUCION
+    # ============================
 
+    patron_distribucion = (
+        f"{probMenor:.0f},"
+        f"{probMayor:.0f},"
+        f"{probBig:.0f}"
+    )
 
+    if (
+        len(historial_distribucion) > 0
+        and historial_distribucion[-1].replace(" 🔁", "") == patron_distribucion
+        ):
+        patron_distribucion += " 🔁"
+
+    historial_distribucion.append(patron_distribucion)
+
+    # Mantener solo las últimas 10 distribuciones
+    if len(historial_distribucion) > 10:
+        historial_distribucion.pop(0)
     # ============================
     # RACHA ACTUAL BAJA
     # ============================
@@ -183,18 +201,12 @@ def actualizar_distribucion():
         f"BIG 10x+: {probBig:.2f}%"
     )
 
+    print("\nHISTORIAL DE DISTRIBUCIONES:")
 
+    for i, patron in enumerate(historial_distribucion, 1):
+        print(f"➜ {patron}")
+        
     print("\nANALISIS:")
-
-    print(
-        f"Racha actual <2x: {racha_baja}"
-    )
-
-
-    print(
-        f"Indice BIG: {indice_big}%"
-    )
-
 
     print(
         "Señal:",
