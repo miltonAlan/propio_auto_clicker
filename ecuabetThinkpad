@@ -47,13 +47,14 @@ def data_intake():
             time.sleep(0.1)
             pyautogui.press("up")
             pyautogui.press("enter")
-            time.sleep(0.1)
+            # time.sleep(0.1)
 
     pyautogui.moveTo(1025, 400)
 
 
 import pandas as pd
 from datetime import datetime
+import winsound
 
 
 def actualizar_distribucion():
@@ -114,13 +115,28 @@ def actualizar_distribucion():
         f"{probBig:.0f}"
     )
 
+
     if (
         len(historial_distribucion) > 0
         and historial_distribucion[-1].replace(" 🔁", "") == patron_distribucion
-        ):
+    ):
         patron_distribucion += " 🔁"
 
     historial_distribucion.append(patron_distribucion)
+
+    # Contar repeticiones consecutivas del mismo patrón
+    repeticiones = 0
+    patron_base = patron_distribucion.replace(" 🔁", "")
+
+    for patron in reversed(historial_distribucion):
+        if patron.replace(" 🔁", "") == patron_base:
+            repeticiones += 1
+        else:
+            break
+
+    # Si se repite 3 o más veces seguidas
+    if repeticiones >= 3:
+        winsound.Beep(1200, 400)  # Frecuencia 1200 Hz durante 400 ms
 
     # Mantener solo las últimas 10 distribuciones
     if len(historial_distribucion) > 10:
@@ -235,7 +251,8 @@ def on_press(key):
         if key == keyboard.KeyCode.from_char('c'):
             bet2()
 
-        if key == keyboard.KeyCode.from_char('z'):
+        if key == keyboard.Key.esc:
+        #if key == keyboard.KeyCode.from_char('z'):
             data_intake()
             texto = pyperclip.paste()
             try:
