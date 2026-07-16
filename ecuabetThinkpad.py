@@ -44,10 +44,9 @@ def data_intake():
                 
         # Solo al entrar a DevTools
         if nombre == "dev tools":
-            time.sleep(0.1)
+            time.sleep(0.5)
             pyautogui.press("up")
             pyautogui.press("enter")
-            # time.sleep(0.1)
 
     pyautogui.moveTo(1025, 400)
 
@@ -123,6 +122,22 @@ def actualizar_distribucion():
         patron_distribucion += " 🔁"
 
     historial_distribucion.append(patron_distribucion)
+
+    # ======================================
+    # ANEXAR NUEVA TUPLA PARA ANÁLISIS
+    # ======================================
+
+    patron_base = patron_distribucion.replace(" 🔁", "")
+
+    with open(
+        "historial_analisis.txt",
+        "a",
+        encoding="utf-8"
+    ) as archivo:
+
+        archivo.write(
+            f"{historial[-1]:.2f},{patron_base}\n"
+        )
 
     # Contar repeticiones consecutivas del mismo patrón
     repeticiones = 0
