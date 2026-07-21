@@ -6,6 +6,7 @@ from pynput import keyboard
 from datetime import datetime
 
 # copiar valor de dom # copy(parseFloat(document.querySelector(".result-multiplier").innerText))
+# new list copy([...document.querySelector("div.stats.dropdown .payouts-block").querySelectorAll("*")].map(e => e.innerText).filter(t => /^\d+(\.\d+)?x?$/.test(t)))
 
 # Historial de datos
 historial = []
@@ -14,23 +15,23 @@ historial_distribucion = []
 bins = [0, 1.5, 2, 3, 5, 10, 20, 50, 100]
 
 def bet():
-    pyautogui.moveTo(1025, 400)
+    pyautogui.moveTo(2635, 555)
     pyautogui.click()
 
 def bet2():
-    pyautogui.moveTo(1250, 400)
+    pyautogui.moveTo(3115, 555)
     pyautogui.click()
 
 
 
 def data_intake():
     pasos = [
-        ("dead point click", (1020, 750)),
-        ("Chrome icon", (314, 750)),
+        ("dead point click", (3000, 1050)),
+        # ("Chrome", (2865, 1039)),
         #("Chrome aviator", (1680, 980)),
-        ("label: Apuestas", (1035, 428)),
-        ("label: Anterior", (1100, 428)),
-        ("dev tools", (1060, 730)),
+        ("label: Apuestas", (2665, 685)),
+        ("label: Anterior", (2787, 685)),
+        ("dev tools", (2865, 1039)),
         #("dead point click", (1020, 750)),
         # ("back to vscode", (500, 750)),
        # ("Chrome icon", (314, 750)),
@@ -123,22 +124,6 @@ def actualizar_distribucion():
 
     historial_distribucion.append(patron_distribucion)
 
-    # ======================================
-    # ANEXAR NUEVA TUPLA PARA ANÁLISIS
-    # ======================================
-
-    patron_base = patron_distribucion.replace(" 🔁", "")
-
-    with open(
-        "historial_analisis.txt",
-        "a",
-        encoding="utf-8"
-    ) as archivo:
-
-        archivo.write(
-            f"{historial[-1]:.2f},{patron_base}\n"
-        )
-
     # Contar repeticiones consecutivas del mismo patrón
     repeticiones = 0
     patron_base = patron_distribucion.replace(" 🔁", "")
@@ -202,52 +187,30 @@ def actualizar_distribucion():
     else:
         señal = "🔴 SIN INDICIOS"
 
-
-
     # ============================
     # RESULTADO
     # ============================
-
-
-    print("\n" + "="*60)
 
     print(
         f"Ultimas {total} jugadas:"
     )
 
     print(ultimas)
+    print("\nGRAFICO DE JUGADAS")
+    print("==================")
 
+    for valor in historial:
 
-    print("\nDISTRIBUCION:")
+        barras = "*" * max(1, int(valor * 2))
 
-    print(
-        f"<2x     : {probMenor:.2f}%"
-    )
-
-    print(
-        f">=2x    : {probMayor:.2f}%"
-    )
-
-    print(
-        f"BIG 10x+: {probBig:.2f}%"
-    )
-
-    print("\nHISTORIAL DE DISTRIBUCIONES:")
-
+        print(f"{barras:<40} {valor:.2f}x")
     for i, patron in enumerate(historial_distribucion, 1):
         print(f"➜ {patron}")
         
-    print("\nANALISIS:")
-
     print(
         "Señal:",
         señal
     )
-
-
-    print("="*60)
-
-
 
 def log(action):
 
