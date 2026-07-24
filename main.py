@@ -131,9 +131,8 @@ def gpt():
     pasos = [
         ("dead point click", (2679, 1066)),
         ("chrome", (200, 757)),
-        ("inside", (150, 660)), # pilas no cambiar el nombre
-        # ("dial out button", (162, 160)), 
-        # ("text box", (151, 296)) # no cambiar
+        ("inside", (150, 660)), 
+        ("blank space", (738, 679)), 
     ]
 
     pyautogui.press('end')
@@ -151,7 +150,7 @@ def gpt():
         # print(f"Click en {nombre} -> ({x}, {y})")
         time.sleep(0.1)
 
-        if nombre == "inside":
+        if nombre == "blank space":
             time.sleep(0.1)
             pyautogui.hotkey('ctrl', '5')  
             time.sleep(0.1)
