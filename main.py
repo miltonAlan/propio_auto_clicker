@@ -56,6 +56,24 @@ def taking_call_audio():
     time.sleep(3)       
     pyautogui.scroll(-250)
 
+def hangUpLEP():
+    pasos = [
+        ("dead point click", (2679, 1066)),
+        ("chrome", (200, 757)),
+        ("inside", (150, 660)),
+        ("hang up button", (274, 626)),
+        ("remove button", (961, 483)),
+    ]
+
+    for nombre, (x, y) in pasos:
+        pyautogui.moveTo(x, y)
+        pyautogui.click()
+        # time.sleep(0.2)
+
+        if nombre == "inside":
+            # time.sleep(0.1)
+            pyautogui.hotkey('ctrl', '4')
+
 def back_to_portal():
     pasos = [
         ("dead point click", (2679, 1066)),
@@ -69,7 +87,6 @@ def back_to_portal():
         # print(f"Click en {nombre} -> ({x}, {y})")
         time.sleep(0.2)
 
-        # 👉 Ejecutar Ctrl + 5 cuando dentro de chrome
         if nombre == "inside":
             time.sleep(0.1)
             pyautogui.hotkey('ctrl', '4')
@@ -541,7 +558,11 @@ def on_press(key):
         if key.char == "'":
             log("' - jabra_on_off")
             jabra_on_off()
-
+            
+        if key.char == '/':
+            log("/ - hang up LEP")
+            hangUpLEP()
+            
     except Exception as e:
         print(e)
 
