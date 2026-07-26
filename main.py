@@ -68,10 +68,23 @@ def hangUpLEP():
     for nombre, (x, y) in pasos:
         pyautogui.moveTo(x, y)
         pyautogui.click()
-        # time.sleep(0.2)
 
         if nombre == "inside":
-            # time.sleep(0.1)
+            pyautogui.hotkey('ctrl', '4')
+
+def backToActive():
+    pasos = [
+        ("dead point click", (2679, 1066)),
+        ("chrome", (200, 757)),
+        ("inside", (150, 660)),
+        ("back to active button", (880, 415)),
+    ]
+
+    for nombre, (x, y) in pasos:
+        pyautogui.moveTo(x, y)
+        pyautogui.click()
+
+        if nombre == "inside":
             pyautogui.hotkey('ctrl', '4')
 
 def back_to_portal():
@@ -561,6 +574,10 @@ def on_press(key):
         if key.char == '/':
             log("/ - hang up LEP")
             hangUpLEP()
+        
+        if key.char == '+':
+            log("+ - back to active")
+            backToActive()
             
     except Exception as e:
         print(e)
