@@ -86,6 +86,39 @@ def backToActive():
 
         if nombre == "inside":
             pyautogui.hotkey('ctrl', '4')
+            
+def pronunciation():
+    pasos = [
+        ("dead point click", (2679, 1066)),
+        ("chrome", (200, 757)),
+        ("inside", (150, 660)),
+        ("X button", (632, 336)),
+        ("text box", (194, 345)),
+        ("speaker button", (82, 619)),
+    ]
+
+    pyautogui.press('end')
+    time.sleep(0.1)
+
+    pyautogui.press('backspace')
+    time.sleep(0.1)
+
+    pyautogui.hotkey('shift', 'home')
+    time.sleep(0.1)
+
+    pyautogui.hotkey('ctrl', 'c')
+    time.sleep(0.1)
+
+    for nombre, (x, y) in pasos:
+        pyautogui.moveTo(x, y)
+        pyautogui.click()
+
+        if nombre == "inside":
+            pyautogui.hotkey('ctrl', '7')            
+        
+        if nombre == "text box":
+            time.sleep(0.1)
+            pyautogui.hotkey('ctrl', 'v')
 
 def back_to_portal():
     pasos = [
@@ -578,6 +611,10 @@ def on_press(key):
         if key.char == '+':
             log("+ - back to active")
             backToActive()
+        
+        if key.char == "\\":
+            log("\\ - pronunciation")
+            pronunciation()
             
     except Exception as e:
         print(e)
