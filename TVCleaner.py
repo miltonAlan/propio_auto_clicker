@@ -6,7 +6,7 @@ CLICKS = 1
 BUTTON = "left"
 
 LIMPIAR_REPETICIONES = 12
-LIMPIAR_DELAY = 2
+LIMPIAR_DELAY = 3
 
 PUNTOS = [
     ("dead point",      3000, 1060),
