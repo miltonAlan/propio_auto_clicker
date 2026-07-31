@@ -18,6 +18,24 @@ def taking_notes():
     
     pyautogui.scroll(-600)
 
+def googleThat():
+    pyautogui.press('end')
+    time.sleep(0.1)
+
+    pyautogui.hotkey('shift', 'home')
+    time.sleep(0.1)
+
+    pyautogui.hotkey('ctrl', 'c')
+    time.sleep(0.1)
+    
+    pyautogui.hotkey('ctrl', 't')
+    time.sleep(0.1)
+    
+    pyautogui.hotkey('ctrl', 'v')
+    time.sleep(0.1)
+    
+    pyautogui.hotkey('enter')
+
 def taking_call_audio():
     pasos = [
         ("dead point click", (2679, 1066)),
@@ -571,6 +589,10 @@ def on_press(key):
         if key == keyboard.Key.f10:
             log("F10 - close_call_video")
             close_call_video()
+        
+        if key == keyboard.Key.insert:
+            log("Insert - googleThat")
+            googleThat()
 
         if key == keyboard.Key.scroll_lock:
             log("ScrollLock - volume_down")
