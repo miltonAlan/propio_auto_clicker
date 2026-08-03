@@ -399,8 +399,9 @@ def edge():
 
 def hold_time():
     taking_notes()
-    hora_actual = datetime.now().strftime("%H:%M:%S")
-    pyautogui.write(hora_actual)
+    hora_actual = datetime.now().strftime("%H..%M..%S")
+    print(hora_actual)          
+    pyautogui.write(hora_actual)  
 
 def close_call_audio():
     pasos = [
