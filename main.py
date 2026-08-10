@@ -591,8 +591,8 @@ def on_press(key):
             log("F10 - close_call_video")
             close_call_video()
         
-        if key == keyboard.Key.insert:
-            log("Insert - googleThat")
+        if key == keyboard.KeyCode.from_char(','):
+            log(", - googleThat")
             googleThat()
 
         if key == keyboard.Key.scroll_lock:
