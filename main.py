@@ -21,6 +21,9 @@ def taking_notes():
 def googleThat():
     pyautogui.press('end')
     time.sleep(0.1)
+    
+    pyautogui.press('backspace')
+    time.sleep(0.1)
 
     pyautogui.hotkey('shift', 'home')
     time.sleep(0.1)
