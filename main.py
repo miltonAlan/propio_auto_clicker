@@ -424,7 +424,7 @@ def close_call_audio():
         pyautogui.moveTo(x, y)
         pyautogui.click()
         # print(f"Click en {nombre} -> ({x}, {y})")
-        time.sleep(0.2)
+        # time.sleep(0.2)
 
         # 👉 Ejecutar Ctrl + 5 cuando dentro de chrome
         if nombre == "inside":
@@ -433,9 +433,9 @@ def close_call_audio():
         if nombre == "END":
             # time.sleep(0.1)
             print("Haciendo scroll hacia abajo...")
+            time.sleep(0.3)
             pyautogui.scroll(-2500)
             pyautogui.scroll(-2500)
-            time.sleep(0.1)
 
     # reset_volume()
 
