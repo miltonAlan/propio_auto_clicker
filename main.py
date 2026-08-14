@@ -311,14 +311,30 @@ def intro_ESP():
     for nombre, (x, y) in pasos:
         pyautogui.moveTo(x, y)
         pyautogui.click()
-        # print(f"Click en {nombre} -> ({x}, {y})")
         time.sleep(0.2)
 
-        # 👉 Presionar SPACE para reproducir greeting
         if nombre == "ESP":
             time.sleep(0.1)
             pyautogui.press('space')
             print("SPACE presionado")
+
+def hang_up_with_audio():
+    pasos = [
+        ("dead point click", (2679, 1066)),
+        ("Brave", (1600, 1067)),
+        ("TXS", (2274, 234)),
+    ]
+
+    for nombre, (x, y) in pasos:
+        pyautogui.moveTo(x, y)
+        pyautogui.click()
+
+        if nombre == "TXS":
+            time.sleep(0.1)
+            pyautogui.press('space')
+    time.sleep(7)
+    close_call_audio()
+
 
 def intro_ENG():
     pasos = [
@@ -590,13 +606,17 @@ def on_press(key):
             log("F9 - gpt")
             gpt()
 
-        if key == keyboard.Key.f10:
-            log("F10 - close_call_video")
-            close_call_video()
+        # if key == keyboard.Key.f10:
+        #     log("F10 - close_call_video")
+        #     close_call_video()
         
         if key == keyboard.KeyCode.from_char(','):
             log(", - googleThat")
             googleThat()
+        
+        if key == keyboard.Key.f10:
+            log("f10 - hang_up_with_audio")
+            hang_up_with_audio()  
 
         if key == keyboard.Key.scroll_lock:
             log("ScrollLock - volume_down")
