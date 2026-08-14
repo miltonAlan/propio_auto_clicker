@@ -19,9 +19,7 @@ def taking_notes():
     pyautogui.scroll(-600)
 
 def googleThat():
-    pyautogui.press('end')
-    time.sleep(0.1)
-    
+
     pyautogui.press('backspace')
     time.sleep(0.1)
 
@@ -43,13 +41,12 @@ def taking_call_audio():
     pasos = [
         ("dead point click", (2679, 1066)),
         ("chrome", (200, 757)),
-        ("inside", (150, 660)), # pilas no cambiar el nombre
+        ("inside", (150, 660)),
         ("accept call", (948, 478)), 
         ("voicemeter icon", (1678, 1060)),
         ("A3", (2813, 838)),
         ("Brave", (1600, 1067)),
         ("ENG", (2275, 175)),
-        # scroll for intake form;
         ("dead point click", (2679, 1066)),
         ("chrome", (200, 757)),
         ("inside again", (150, 660)),
@@ -61,14 +58,12 @@ def taking_call_audio():
     for nombre, (x, y) in pasos:
         pyautogui.moveTo(x, y)
         pyautogui.click()
-        # print(f"Click en {nombre} -> ({x}, {y})")
         time.sleep(0.2)
 
         if nombre == "inside":
             time.sleep(0.1)
-            pyautogui.hotkey('ctrl', '4')
+            pyautogui.hotkey('ctrl', '5')
 
-        # 👉 Presionar SPACE para reproducir greeting
         if nombre == "ENG":
             time.sleep(1)
             pyautogui.press('space')
@@ -91,7 +86,7 @@ def hangUpLEP():
         pyautogui.click()
 
         if nombre == "inside":
-            pyautogui.hotkey('ctrl', '4')
+            pyautogui.hotkey('ctrl', '5')
 
 def backToActive():
     pasos = [
@@ -106,7 +101,7 @@ def backToActive():
         pyautogui.click()
 
         if nombre == "inside":
-            pyautogui.hotkey('ctrl', '4')
+            pyautogui.hotkey('ctrl', '5')
             
 def pronunciation():
     pasos = [
@@ -135,7 +130,7 @@ def pronunciation():
         pyautogui.click()
 
         if nombre == "inside":
-            pyautogui.hotkey('ctrl', '7')            
+            pyautogui.hotkey('ctrl', '8')            
         
         if nombre == "text box":
             time.sleep(0.1)
@@ -145,18 +140,17 @@ def back_to_portal():
     pasos = [
         ("dead point click", (2679, 1066)),
         ("chrome", (200, 757)),
-        ("inside", (150, 660)), # pilas no cambiar el nombre
+        ("inside", (150, 660)),
     ]
 
     for nombre, (x, y) in pasos:
         pyautogui.moveTo(x, y)
         pyautogui.click()
-        # print(f"Click en {nombre} -> ({x}, {y})")
         time.sleep(0.2)
 
         if nombre == "inside":
             time.sleep(0.1)
-            pyautogui.hotkey('ctrl', '4')
+            pyautogui.hotkey('ctrl', '5')
 
 def dial_out():
     pasos = [
@@ -185,7 +179,7 @@ def dial_out():
         # 👉 Ejecutar Ctrl + 5 cuando dentro de chrome
         if nombre == "inside":
             time.sleep(0.1)
-            pyautogui.hotkey('ctrl', '4')
+            pyautogui.hotkey('ctrl', '5')
 
         if nombre == "text box":
             time.sleep(0.2)
@@ -214,12 +208,11 @@ def gpt():
     for nombre, (x, y) in pasos:
         pyautogui.moveTo(x, y)
         pyautogui.click()
-        # print(f"Click en {nombre} -> ({x}, {y})")
         time.sleep(0.1)
 
         if nombre == "blank space":
             time.sleep(0.1)
-            pyautogui.hotkey('ctrl', '5')  
+            pyautogui.hotkey('ctrl', '6')  
             time.sleep(0.1)
             pyautogui.hotkey('ctrl', 'v')
             time.sleep(0.1)
@@ -236,8 +229,6 @@ def mute_unmute():
     for nombre, (x, y) in pasos:
         pyautogui.moveTo(x, y)
         pyautogui.click()
-        # print(f"Click en {nombre} -> ({x}, {y})")
-        # time.sleep(0.5)       
 
 def jabra_on_off():
     pasos = [
@@ -332,9 +323,8 @@ def hang_up_with_audio():
         if nombre == "TXS":
             time.sleep(0.1)
             pyautogui.press('space')
-    time.sleep(7)
+    time.sleep(6)
     close_call_audio()
-
 
 def intro_ENG():
     pasos = [
@@ -439,62 +429,56 @@ def close_call_audio():
     for nombre, (x, y) in pasos:
         pyautogui.moveTo(x, y)
         pyautogui.click()
-        # print(f"Click en {nombre} -> ({x}, {y})")
-        # time.sleep(0.2)
 
-        # 👉 Ejecutar Ctrl + 5 cuando dentro de chrome
         if nombre == "inside":
             time.sleep(0.1)
-            pyautogui.hotkey('ctrl', '4')
+            pyautogui.hotkey('ctrl', '5')
         if nombre == "END":
-            # time.sleep(0.1)
             print("Haciendo scroll hacia abajo...")
             time.sleep(0.3)
             pyautogui.scroll(-2500)
             pyautogui.scroll(-2500)
 
-    # reset_volume()
+# def close_call_audio_with_audio():
+#     pasos = [
+#         # my pleasure audio
+#         ("dead point click", (2679, 1066)),
+#         ("Brave", (1600, 1067)),
+#         ("PLEASURE", (2260, 240)),
 
-def close_call_audio_with_audio():
-    pasos = [
-        # my pleasure audio
-        ("dead point click", (2679, 1066)),
-        ("Brave", (1600, 1067)),
-        ("PLEASURE", (2260, 240)),
+#         ("dead point click", (2679, 1066)),
+#         ("voicemeter icon", (1678, 1060)),
+#         ("A3", (2813, 838)),
+#         ("chrome", (200, 757)),
+#         ("inside", (150, 660)), # pilas no cambiar el nombre
+#         ("hang up button", (200, 450)), 
+#         ("END", (944, 487)), # pilas no cambiar el nombre
+#         ("successfully", (422, 210)),
+#         ("save n close", (1236,650)),
+#         ("save n close x2", (1135,493))
+#     ]
 
-        ("dead point click", (2679, 1066)),
-        ("voicemeter icon", (1678, 1060)),
-        ("A3", (2813, 838)),
-        ("chrome", (200, 757)),
-        ("inside", (150, 660)), # pilas no cambiar el nombre
-        ("hang up button", (200, 450)), 
-        ("END", (944, 487)), # pilas no cambiar el nombre
-        ("successfully", (422, 210)),
-        ("save n close", (1236,650)),
-        ("save n close x2", (1135,493))
-    ]
+#     for nombre, (x, y) in pasos:
+#         pyautogui.moveTo(x, y)
+#         pyautogui.click()
+#         # print(f"Click en {nombre} -> ({x}, {y})")
+#         time.sleep(0.2)
 
-    for nombre, (x, y) in pasos:
-        pyautogui.moveTo(x, y)
-        pyautogui.click()
-        # print(f"Click en {nombre} -> ({x}, {y})")
-        time.sleep(0.2)
+#         # 👉 Presionar SPACE para reproducir
+#         if nombre == "PLEASURE":
+#             pyautogui.press('space')
+#             time.sleep(5)
 
-        # 👉 Presionar SPACE para reproducir
-        if nombre == "PLEASURE":
-            pyautogui.press('space')
-            time.sleep(5)
-
-        # 👉 Ejecutar Ctrl + 5 cuando dentro de chrome
-        if nombre == "inside":
-            time.sleep(0.1)
-            pyautogui.hotkey('ctrl', '4')
-        if nombre == "END":
-            # time.sleep(0.1)
-            print("Haciendo scroll hacia abajo...")
-            pyautogui.scroll(-2500)
-            pyautogui.scroll(-2500)
-            time.sleep(0.1)
+#         # 👉 Ejecutar Ctrl + 5 cuando dentro de chrome
+#         if nombre == "inside":
+#             time.sleep(0.1)
+#             pyautogui.hotkey('ctrl', '4')
+#         if nombre == "END":
+#             # time.sleep(0.1)
+#             print("Haciendo scroll hacia abajo...")
+#             pyautogui.scroll(-2500)
+#             pyautogui.scroll(-2500)
+#             time.sleep(0.1)
 
 def close_call_video():
     pasos = [
@@ -550,20 +534,6 @@ def deepL():
 
         time.sleep(0.1)
     pyautogui.hotkey('ctrl', 'l')
-    # pasos = [
-    #     ("dead point click", (2679, 1066)),
-    #     ("edge", (1531, 1063)),     
-    #     ("3x click", (2376, 1031)), 
-    #     ("3x click", (2376, 1031)), 
-    #     ("3x click", (2376, 1031)), 
-    #     ("deepL", (1615, 1031))
-    # ]
-
-    # for nombre, (x, y) in pasos:
-    #     pyautogui.moveTo(x, y)
-    #     pyautogui.click()
-    #     print(f"Click en {nombre} -> ({x}, {y})")
-    #     time.sleep(0.1)          
 
 def log(action):
     print(f"[{datetime.now().strftime('%H:%M:%S')}] {action}")
@@ -574,9 +544,9 @@ def on_press(key):
             log("F2 - dial_out")
             dial_out()
 
-        if key == keyboard.Key.f3:
-            log("F3 - taking_call_video")
-            taking_call_video()
+        # if key == keyboard.Key.f3:
+        #     log("F3 - taking_call_video")
+        #     taking_call_video()
 
         if key == keyboard.Key.f4:
             log("F4 - taking_notes")
@@ -611,7 +581,8 @@ def on_press(key):
         #     close_call_video()
         
         if key == keyboard.KeyCode.from_char(','):
-            log(", - googleThat")
+        # if key == keyboard.Key.f6:
+            log("f6 - googleThat")
             googleThat()
         
         if key == keyboard.Key.f10:
