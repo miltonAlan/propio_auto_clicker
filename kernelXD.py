@@ -99,10 +99,41 @@ def position_VS_code():
 
     pyautogui.mouseUp()
     
+def edge_setup():
+    pasos = [
+        ("dead point click", (2679, 1066)),
+        ("edge", (1531, 1063)),        
+        ("inside", (2402, 980)),
+        ("continue on browser", (1923, 612)),
+        ("unirse ahora", (2174, 938)),
+        ("tres puntitos", (1821, 200)),
+        ("grabar y transcribir", (2039, 701)),
+    ]
+
+    for nombre, (x, y) in pasos:
+        pyautogui.moveTo(x, y)
+        pyautogui.click()
+        time.sleep(1)
+        if nombre == "edge":  # espero cargue la reunion
+            time.sleep(10)
+            # pyautogui.keyDown('win')
+            # pyautogui.press('left')
+            # time.sleep(1)
+            # pyautogui.keyUp('win')            
+        if nombre == "inside": 
+            pyautogui.press('esc')        
+        if nombre == "continue on browser": 
+            time.sleep(30)
+            pyautogui.scroll(-500)
+        if nombre == "unirse ahora": 
+            time.sleep(20)
+
 if __name__ == "__main__":
-    clicker()
+    # clicker()
     # check_all_pages()
     # create_noutes()
     # load_VS_code()
-    position_VS_code()
+    # position_VS_code()
+    edge_setup()
+    
     
