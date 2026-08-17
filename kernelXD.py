@@ -8,6 +8,18 @@ from datetime import datetime
 
 notas_file = "noutes.sql"
 
+def clicker():
+    pasos = [
+        ("dead point click", (2679, 1066)),
+        ("chrome", (200, 757)),
+        ("inside", (150, 660)),
+        # ("guardar cambios", (727, 188)),
+    ]
+
+    for nombre, (x, y) in pasos:
+        pyautogui.moveTo(x, y)
+        pyautogui.click()
+
 def check_all_pages():
     pasos = [
         ("dead point click", (2679, 1066)),
@@ -35,7 +47,7 @@ def load_VS_code():
         ("blank space", (1156, 457)),
     ]
     
-    pyautogui.hotkey('ctrl', 't')
+    pyautogui.hotkey('ctrl', 'n')
     time.sleep(1)
     pyperclip.copy('https://vscode.dev/')
     pyautogui.hotkey('ctrl', 'v')
@@ -52,15 +64,11 @@ def load_VS_code():
             pyautogui.hotkey('ctrl', 'v')
             time.sleep(1)
 
-    pyautogui.scroll(-1000)
-    time.sleep(3)
-    # blank space click
-    pyautogui.click(1156, 457)
     pyautogui.hotkey('enter')
     # guardar cambios
-    time.sleep(2)
+    time.sleep(3)
     pyautogui.click(727, 188)
-        
+
 def create_noutes():
     subprocess.run([
         r"C:\Users\mpaucar\AppData\Local\Programs\Python\Python313\python.exe",
@@ -72,32 +80,29 @@ def log(action):
 
 def position_VS_code():
     pasos = [
-        ("dead point click", (2679, 1066)),
-        ("pestana chrome", (300, 15)),
+        ("punto medio", (2326, 821)),
+        ("hasta aqui", (2449, 734)),
     ]
 
-    for nombre, (x, y) in pasos:
-        pyautogui.moveTo(x, y)
+    pyautogui.keyDown('win')
+    for _ in range(5):
+        pyautogui.press('right')
+        time.sleep(1)
+    pyautogui.keyUp('win')
 
-        if nombre == "pestana chrome":
-            pyautogui.mouseDown(button='left')
+    time.sleep(2)
+    # Click sostenido desde el primer punto hasta el segundo
+    pyautogui.moveTo(*pasos[0][1])
+    pyautogui.mouseDown()
 
-            # mover SIN soltar el click
-            pyautogui.moveRel(925, 0, duration=0.5)
-            pyautogui.moveRel(0, 400, duration=0.5)
+    pyautogui.moveTo(*pasos[1][1], duration=1)
 
-            pyautogui.mouseUp(button='left')
-
-            print(f"Drag en {nombre} -> ({x}, {y})")
-
-        else:
-            pyautogui.click()
-            print(f"Click en {nombre} -> ({x}, {y})")
-
-        time.sleep(0.1)
-
+    pyautogui.mouseUp()
+    
 if __name__ == "__main__":
-    check_all_pages()
-    create_noutes()
-    load_VS_code()
+    clicker()
+    # check_all_pages()
+    # create_noutes()
+    # load_VS_code()
+    position_VS_code()
     
