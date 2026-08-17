@@ -316,6 +316,7 @@ def hang_up_with_audio():
         ("TXS", (2274, 234)),
     ]
 
+    jabra_on_off()
     for nombre, (x, y) in pasos:
         pyautogui.moveTo(x, y)
         pyautogui.click()
@@ -324,6 +325,7 @@ def hang_up_with_audio():
             time.sleep(0.1)
             pyautogui.press('space')
     time.sleep(6)
+    jabra_on_off()
     close_call_audio()
 
 def intro_ENG():
