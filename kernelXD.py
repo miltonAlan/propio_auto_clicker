@@ -11,9 +11,12 @@ notas_file = "noutes.sql"
 def clicker():
     pasos = [
         ("dead point click", (2679, 1066)),
-        ("chrome", (200, 757)),
-        ("inside", (150, 660)),
+        # ("chrome", (200, 757)),
         # ("guardar cambios", (727, 188)),
+        
+        # edge
+        ("edge", (1531, 1063)),        
+        ("dead point inside edge", (2402, 980)),
     ]
 
     for nombre, (x, y) in pasos:
@@ -101,13 +104,18 @@ def position_VS_code():
     
 def edge_setup():
     pasos = [
-        ("dead point click", (2679, 1066)),
-        ("edge", (1531, 1063)),        
-        ("inside", (2402, 980)),
-        ("continue on browser", (1923, 612)),
-        ("unirse ahora", (2174, 938)),
-        ("tres puntitos", (1821, 200)),
-        ("grabar y transcribir", (2039, 701)),
+        # ("dead point click", (2679, 1066)),
+        # ("edge", (1531, 1063)),        
+        # ("inside", (2402, 980)),
+        # ("continue on browser", (1923, 612)),
+        # ("unirse ahora", (2174, 938)),
+        # ("tres puntitos", (1821, 200)),
+        # ("grabar y transcribir", (2039, 701)),
+        # ("iniciar transcripcion", (1967, 825)),
+        # ("confirmar", (2204, 701)),
+        # ("microfono", (2072, 202)),
+        # ("extender panel transcripcion", (1884, 683)),
+        ("cierro dialogo", (2402, 417)),
     ]
 
     for nombre, (x, y) in pasos:
@@ -127,9 +135,17 @@ def edge_setup():
             pyautogui.scroll(-500)
         if nombre == "unirse ahora": 
             time.sleep(20)
+        if nombre == "unirse ahora": 
+            time.sleep(20)
+        if nombre == "extender panel transcripcion": 
+            pyautogui.moveTo(x, y)
+            # pyautogui.mouseDown()
+            # pyautogui.moveRel(-200, 0, duration=1)
+            # pyautogui.mouseUp()
+            # time.sleep(1)
 
 if __name__ == "__main__":
-    # clicker()
+    clicker()
     # check_all_pages()
     # create_noutes()
     # load_VS_code()
