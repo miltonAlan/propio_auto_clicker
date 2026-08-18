@@ -71,6 +71,7 @@ def load_VS_code():
     # guardar cambios
     time.sleep(3)
     pyautogui.click(727, 188)
+    time.sleep(2)
 
 def create_noutes():
     subprocess.run([
@@ -114,7 +115,7 @@ def edge_setup():
         # ("iniciar transcripcion", (1967, 825)),
         # ("confirmar", (2204, 701)),
         # ("microfono", (2072, 202)),
-        # ("extender panel transcripcion", (1884, 683)),
+        ("extender panel transcripcion", (1884, 683)),
         ("cierro dialogo", (2402, 417)),
     ]
 
@@ -138,11 +139,12 @@ def edge_setup():
         if nombre == "unirse ahora": 
             time.sleep(20)
         if nombre == "extender panel transcripcion": 
-            pyautogui.moveTo(x, y)
+            time.sleep(5)
+            pyautogui.click()
+            pyautogui.click()
             # pyautogui.mouseDown()
             # pyautogui.moveRel(-200, 0, duration=1)
             # pyautogui.mouseUp()
-            # time.sleep(1)
 
 if __name__ == "__main__":
     clicker()
