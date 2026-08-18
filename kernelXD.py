@@ -105,16 +105,16 @@ def position_VS_code():
     
 def edge_setup():
     pasos = [
-        # ("dead point click", (2679, 1066)),
-        # ("edge", (1531, 1063)),        
-        # ("inside", (2402, 980)),
-        # ("continue on browser", (1923, 612)),
-        # ("unirse ahora", (2174, 938)),
-        # ("tres puntitos", (1821, 200)),
-        # ("grabar y transcribir", (2039, 701)),
-        # ("iniciar transcripcion", (1967, 825)),
-        # ("confirmar", (2204, 701)),
-        # ("microfono", (2072, 202)),
+        ("dead point click", (2679, 1066)),
+        ("edge", (1531, 1063)),        
+        ("inside", (2402, 980)),
+        ("continue on browser", (1923, 612)),
+        ("unirse ahora", (2174, 938)),
+        ("tres puntitos", (1821, 200)),
+        ("grabar y transcribir", (2039, 701)),
+        ("iniciar transcripcion", (1967, 825)),
+        ("confirmar", (2204, 701)),
+        ("microfono", (2072, 202)),
         ("extender panel transcripcion", (1884, 683)),
         ("cierro dialogo", (2402, 417)),
     ]
