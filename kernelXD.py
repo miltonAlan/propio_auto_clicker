@@ -139,7 +139,7 @@ def edge_setup():
         if nombre == "unirse ahora": 
             time.sleep(20)
         if nombre == "extender panel transcripcion": 
-            time.sleep(5)
+            time.sleep(10)
             pyautogui.click()
             pyautogui.click()
             # pyautogui.mouseDown()
@@ -147,7 +147,7 @@ def edge_setup():
             # pyautogui.mouseUp()
 
 if __name__ == "__main__":
-    clicker()
+    # clicker()
     # check_all_pages()
     # create_noutes()
     # load_VS_code()
