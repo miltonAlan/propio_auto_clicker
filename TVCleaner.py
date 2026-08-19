@@ -36,6 +36,6 @@ def open_TV():
 
     time.sleep(30)
 
-
 if __name__ == "__main__":
+    open_TV()
     ejecutar_pasos()
