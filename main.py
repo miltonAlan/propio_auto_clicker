@@ -295,8 +295,8 @@ def taking_call_video():
 def intro_ESP():
     pasos = [
         ("dead point click", (2679, 1066)),
-        ("Brave", (1600, 1067)),
-        ("ESP", (2269, 209)),
+        ("brave", (1600, 1067)),
+        # ("ESP", (2269, 209)),
     ]
 
     for nombre, (x, y) in pasos:
@@ -304,16 +304,16 @@ def intro_ESP():
         pyautogui.click()
         time.sleep(0.2)
 
-        if nombre == "ESP":
+        if nombre == "brave":
             time.sleep(0.1)
-            pyautogui.press('space')
-            print("SPACE presionado")
+            pyautogui.hotkey("ctrl", "2")
+            pyautogui.press("space")
 
 def hang_up_with_audio():
     pasos = [
         ("dead point click", (2679, 1066)),
-        ("Brave", (1600, 1067)),
-        ("TXS", (2274, 234)),
+        ("brave", (1600, 1067)),
+        # ("TXS", (2274, 234)),
     ]
 
     jabra_on_off()
@@ -321,31 +321,31 @@ def hang_up_with_audio():
         pyautogui.moveTo(x, y)
         pyautogui.click()
 
-        if nombre == "TXS":
+        if nombre == "brave":
             time.sleep(0.1)
-            pyautogui.press('space')
+            pyautogui.hotkey("ctrl", "3")
+            pyautogui.press("space")
+            
     time.sleep(6)
-    jabra_on_off()
     close_call_audio()
+    jabra_on_off()
 
 def intro_ENG():
     pasos = [
         ("dead point click", (2679, 1066)),
-        ("Brave", (1600, 1067)),
-        ("ENG", (2269, 179)),
+        ("brave", (1600, 1067)),
+        # ("ENG", (2269, 179)),
     ]
 
     for nombre, (x, y) in pasos:
         pyautogui.moveTo(x, y)
         pyautogui.click()
-        # print(f"Click en {nombre} -> ({x}, {y})")
         time.sleep(0.2)
 
-        # 👉 Presionar SPACE para reproducir greeting
-        if nombre == "ENG":
+        if nombre == "brave":
             time.sleep(0.1)
-            pyautogui.press('space')
-            print("SPACE presionado")
+            pyautogui.hotkey("ctrl", "1")
+            pyautogui.press("space")
 
 def volume_up():
     pasos = [

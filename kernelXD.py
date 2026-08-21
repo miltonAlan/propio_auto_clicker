@@ -151,21 +151,21 @@ def brave_setup():
         time.sleep(1)
         if nombre == "morning":
             if datetime.now().hour < 12:
+                time.sleep(5)
                 pyautogui.moveTo(x, y)
                 pyautogui.click()
 
                 pyautogui.rightClick(x, y)
-                time.sleep(1)
                 pyautogui.press("down")
                 pyautogui.press("enter")
 
         elif nombre == "afternoon":
             if datetime.now().hour >= 12:
+                time.sleep(5)
                 pyautogui.moveTo(x, y)
                 pyautogui.click()
 
                 pyautogui.rightClick(x, y)
-                time.sleep(1)
                 pyautogui.press("down")
                 pyautogui.press("enter")
 
@@ -173,13 +173,43 @@ def brave_setup():
             pyautogui.moveTo(x, y)
             pyautogui.click()
             
+    # cierro pestania en blanco
+    pyautogui.hotkey("ctrl", "w")
+    # espero carguen todas las pantallas
+    time.sleep(10)
+            
+def audios_checkup():
+    pasos = [
+        ("dead point click", (2679, 1066)),
+        ("brave", (1600, 1067)),
+    ]
+
+    for nombre, (x, y) in pasos:
+        time.sleep(1)
+        pyautogui.moveTo(x, y)
+        pyautogui.click()
+        
+    #EN
+    time.sleep(2)
+    pyautogui.hotkey("ctrl", "1")
+    pyautogui.press("space")
+    #ES
+    pyautogui.hotkey("ctrl", "2")
+    time.sleep(2)
+    pyautogui.press("space")
+    #TXS    
+    time.sleep(2)
+    pyautogui.hotkey("ctrl", "3")
+    pyautogui.press("space")
+                        
 if __name__ == "__main__":
-    # clicker()
-    # check_all_pages()
-    # create_noutes()
-    # load_VS_code()
-    # position_VS_code()
-    # edge_setup()
+    clicker()
+    check_all_pages()
+    create_noutes()
+    load_VS_code()
+    position_VS_code()
+    edge_setup()
     brave_setup()
+    audios_checkup()
     
     
