@@ -125,10 +125,6 @@ def edge_setup():
         time.sleep(1)
         if nombre == "edge":  # espero cargue la reunion
             time.sleep(10)
-            # pyautogui.keyDown('win')
-            # pyautogui.press('left')
-            # time.sleep(1)
-            # pyautogui.keyUp('win')            
         if nombre == "inside": 
             pyautogui.press('esc')        
         if nombre == "continue on browser": 
@@ -136,22 +132,54 @@ def edge_setup():
             pyautogui.scroll(-500)
         if nombre == "unirse ahora": 
             time.sleep(20)
-        if nombre == "unirse ahora": 
-            time.sleep(20)
+        if nombre == "microfono": 
+            time.sleep(5)
         if nombre == "extender panel transcripcion": 
             time.sleep(10)
             pyautogui.click()
             pyautogui.click()
-            # pyautogui.mouseDown()
-            # pyautogui.moveRel(-200, 0, duration=1)
-            # pyautogui.mouseUp()
 
+def brave_setup():
+    pasos = [
+        ("dead point click", (2679, 1066)),
+        ("brave", (1600, 1067)),
+        ("morning", (2352, 154)),
+        ("afternoon", (2444, 157)),
+    ]
+
+    for nombre, (x, y) in pasos:
+        time.sleep(1)
+        if nombre == "morning":
+            if datetime.now().hour < 12:
+                pyautogui.moveTo(x, y)
+                pyautogui.click()
+
+                pyautogui.rightClick(x, y)
+                time.sleep(1)
+                pyautogui.press("down")
+                pyautogui.press("enter")
+
+        elif nombre == "afternoon":
+            if datetime.now().hour >= 12:
+                pyautogui.moveTo(x, y)
+                pyautogui.click()
+
+                pyautogui.rightClick(x, y)
+                time.sleep(1)
+                pyautogui.press("down")
+                pyautogui.press("enter")
+
+        else:
+            pyautogui.moveTo(x, y)
+            pyautogui.click()
+            
 if __name__ == "__main__":
     # clicker()
     # check_all_pages()
     # create_noutes()
     # load_VS_code()
     # position_VS_code()
-    edge_setup()
+    # edge_setup()
+    brave_setup()
     
     
