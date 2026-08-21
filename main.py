@@ -327,8 +327,8 @@ def hang_up_with_audio():
             pyautogui.press("space")
             
     time.sleep(6)
-    close_call_audio()
     jabra_on_off()
+    close_call_audio()
 
 def intro_ENG():
     pasos = [
