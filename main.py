@@ -45,8 +45,8 @@ def taking_call_audio():
         ("accept call", (948, 478)), 
         ("voicemeter icon", (1678, 1060)),
         ("A3", (2813, 838)),
-        ("Brave", (1600, 1067)),
-        ("ENG", (2275, 175)),
+        # ("Brave", (1600, 1067)),
+        # ("ENG", (2275, 175)),
         ("dead point click", (2679, 1066)),
         ("chrome", (200, 757)),
         ("inside again", (150, 660)),
@@ -64,11 +64,9 @@ def taking_call_audio():
             time.sleep(0.1)
             pyautogui.hotkey('ctrl', '5')
 
-        if nombre == "ENG":
-            time.sleep(1)
-            pyautogui.press('space')
-            print("SPACE presionado")
-
+        if nombre == "A3":
+            intro_ENG()
+            
     time.sleep(3)       
     pyautogui.scroll(-250)
 
