@@ -86,6 +86,34 @@ def hangUpLEP():
         if nombre == "inside":
             pyautogui.hotkey('ctrl', '5')
 
+def music_mode():
+    pasos = [
+        ("dead point click", (2679, 1066)),
+        ("youtube", (1492, 1061)),
+        ("dead point click", (2679, 1066)),
+        ("voicemeter icon", (1678, 1060)),   
+        ("A3 aux", (2932, 838)),
+        ("B1 aux", (2937, 871)),
+    ]
+
+    for nombre, (x, y) in pasos:
+        if nombre == "youtube":
+            pyautogui.press('space')
+            time.sleep(0.2)
+            pyautogui.moveTo(x, y)
+            pyautogui.click()
+            time.sleep(0.2)
+            pyautogui.press('space')
+            
+        else: 
+            time.sleep(0.2)
+            pyautogui.moveTo(x, y)
+            pyautogui.click()
+
+def back_from_night_mode():
+    jabra_on_off()
+    taking_call_audio()
+
 def backToActive():
     pasos = [
         ("dead point click", (2679, 1066)),
@@ -632,6 +660,14 @@ def on_press(key):
         if key.char == "\\":
             log("\\ - pronunciation")
             pronunciation()
+        
+        if key.char == '^':
+            log("^ - music mode")
+            music_mode()
+        
+        if key.char == '!':
+            log("! - back_from_night_mode")
+            back_from_night_mode()
             
     except Exception as e:
         print(e)
