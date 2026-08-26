@@ -45,8 +45,6 @@ def taking_call_audio():
         ("accept call", (948, 478)), 
         ("voicemeter icon", (1678, 1060)),
         ("A3", (2813, 838)),
-        # ("Brave", (1600, 1067)),
-        # ("ENG", (2275, 175)),
         ("dead point click", (2679, 1066)),
         ("chrome", (200, 757)),
         ("inside again", (150, 660)),
@@ -352,7 +350,7 @@ def hang_up_with_audio():
             pyautogui.hotkey("ctrl", "3")
             pyautogui.press("space")
             
-    time.sleep(6)
+    time.sleep(7)
     jabra_on_off()
     close_call_audio()
 
