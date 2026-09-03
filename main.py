@@ -126,6 +126,8 @@ def backToActive():
 
         if nombre == "inside":
             pyautogui.hotkey('ctrl', '5')
+            time.sleep(0.1)
+            pyautogui.scroll(200)
             
 def pronunciation():
     pasos = [
