@@ -124,7 +124,7 @@ def edge_setup():
         ("grabar y transcribir", (2039, 701)),
         ("iniciar transcripcion", (1967, 825)),
         ("confirmar", (2204, 701)),
-        ("microfono", (2072, 202)),
+        # ("microfono", (2072, 202)),
         ("extender panel transcripcion", (1884, 683)),
         ("cierro dialogo", (2402, 417)),
     ]
