@@ -703,11 +703,11 @@ def on_press(key):
         if key.char == '&':
             log("& - music mode ON")
             music_mode_ON()
+            reset_volume_aux()
         
         if key.char == '^':
             log("^ - music mode OFF")
             music_mode_OFF()
-            reset_volume_aux()
         
         if key.char == '!':
             log("! - back_from_night_mode")
