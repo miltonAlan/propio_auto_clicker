@@ -412,6 +412,19 @@ def volume_up():
 
     pyautogui.scroll(1)
 
+def reset_volume_aux():
+    pasos = [
+        ("dead point click", (2679, 1066)),
+        ("voicemeter icon", (1678, 1060)),        
+        ("volume bar", (2880, 829)),
+        ("volume bar", (2880, 829)),
+        ("volume bar", (2880, 829)),
+        ]
+
+    for nombre, (x, y) in pasos:
+        pyautogui.moveTo(x, y)
+        pyautogui.click()
+    
 def reset_volume():
     pasos = [
         ("dead point click", (2679, 1066)),
@@ -585,7 +598,9 @@ def deepL():
             print(f"Click en {nombre} -> ({x}, {y})")
 
         time.sleep(0.1)
-    pyautogui.hotkey('ctrl', 'l')
+    # pyautogui.hotkey('ctrl', 'l')
+    # boton traducir deepL
+    pyautogui.click(1530, 346)
 
 def log(action):
     print(f"[{datetime.now().strftime('%H:%M:%S')}] {action}")
@@ -692,6 +707,7 @@ def on_press(key):
         if key.char == '^':
             log("^ - music mode OFF")
             music_mode_OFF()
+            reset_volume_aux()
         
         if key.char == '!':
             log("! - back_from_night_mode")
