@@ -47,7 +47,7 @@ def load_VS_code():
         ("inside", (150, 660)),
         ("3 lines", (29, 215)),
         ("nombre del archivo", (584, 609)),
-        ("abrir button", (912, 641)),
+        # ("abrir button", (912, 641)),
         ("blank space", (1156, 457)),
     ]
     
@@ -75,6 +75,7 @@ def load_VS_code():
         if nombre == "nombre del archivo":
             pyperclip.copy(str(notas_file))
             pyautogui.hotkey('ctrl', 'v')
+            pyautogui.press('enter')
             time.sleep(1)
 
     pyautogui.hotkey('enter')
