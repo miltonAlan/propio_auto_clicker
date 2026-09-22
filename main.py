@@ -16,7 +16,7 @@ def taking_notes():
         pyautogui.moveTo(x, y)
         pyautogui.click()
     
-    pyautogui.scroll(-600)
+    pyautogui.scroll(-500)
 
 def googleThat():
 
@@ -602,6 +602,49 @@ def deepL():
     # boton traducir deepL
     pyautogui.click(1530, 346)
 
+def audios_health_check():
+    pasos = [
+        ("dead point click", (2679, 1066)),
+        ("B1 aux", (2937, 871)),
+        ("dead point click", (2679, 1066)),
+        ("brave", (1600, 1067)),
+        ("dead point click", (2679, 1066)),
+        ("B1 aux", (2937, 871)),
+    ]
+
+    for nombre, (x, y) in pasos:
+        pyautogui.moveTo(x, y)
+        pyautogui.click()
+        
+        if nombre == "brave":
+            #EN
+            pyautogui.hotkey("ctrl", "1")
+            pyautogui.hotkey("ctrl", "r")
+            #ES
+            pyautogui.hotkey("ctrl", "2")
+            pyautogui.hotkey("ctrl", "r")
+            #TXS    
+            pyautogui.hotkey("ctrl", "3")
+            pyautogui.hotkey("ctrl", "r")
+            
+            #ya cargado esperamos
+            time.sleep(10)
+            pyautogui.hotkey("ctrl", "1")
+            time.sleep(1)
+            pyautogui.press('space')
+            # pyautogui.press('space')
+            pyautogui.hotkey("ctrl", "2")
+            time.sleep(1)
+            pyautogui.press('space')
+            # pyautogui.press('space')
+            pyautogui.hotkey("ctrl", "3")
+            time.sleep(1)
+            pyautogui.press('space')
+            # pyautogui.press('space')
+            
+            # general wait time
+            time.sleep(13)
+
 def log(action):
     print(f"[{datetime.now().strftime('%H:%M:%S')}] {action}")
 
@@ -624,8 +667,8 @@ def on_press(key):
             volume_up()
 
         if key == keyboard.Key.page_down:
-            log("PageDown - back_to_portal")
-            back_to_portal()
+            log("PageDown - audios_health_check")
+            audios_health_check()
 
         if key == keyboard.Key.page_up:
             log("PageUp - night_mode")
