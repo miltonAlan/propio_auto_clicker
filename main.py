@@ -605,10 +605,12 @@ def deepL():
 def audios_health_check():
     pasos = [
         ("dead point click", (2679, 1066)),
+        ("voicemeter icon", (1678, 1060)),
         ("B1 aux", (2937, 871)),
         ("dead point click", (2679, 1066)),
         ("brave", (1600, 1067)),
         ("dead point click", (2679, 1066)),
+        ("voicemeter icon", (1678, 1060)),
         ("B1 aux", (2937, 871)),
     ]
 
