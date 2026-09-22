@@ -16,7 +16,7 @@ def taking_notes():
         pyautogui.moveTo(x, y)
         pyautogui.click()
     
-    pyautogui.scroll(-500)
+    pyautogui.scroll(-400)
 
 def googleThat():
 
@@ -632,18 +632,11 @@ def audios_health_check():
             #ya cargado esperamos
             time.sleep(10)
             pyautogui.hotkey("ctrl", "1")
-            time.sleep(1)
-            pyautogui.press('space')
-            # pyautogui.press('space')
+            pyautogui.click(2501, 277)
             pyautogui.hotkey("ctrl", "2")
-            time.sleep(1)
-            pyautogui.press('space')
-            # pyautogui.press('space')
+            pyautogui.click(2501, 277)
             pyautogui.hotkey("ctrl", "3")
-            time.sleep(1)
-            pyautogui.press('space')
-            # pyautogui.press('space')
-            
+            pyautogui.click(2501, 277)
             # general wait time
             time.sleep(13)
 
