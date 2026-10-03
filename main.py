@@ -2,6 +2,7 @@ import pyautogui
 import time
 from pynput import keyboard
 from datetime import datetime
+import threading
 
 def taking_notes():
     pasos = [
@@ -358,6 +359,12 @@ def intro_ESP():
             time.sleep(0.1)
             pyautogui.hotkey("ctrl", "2")
             pyautogui.press("space")
+           
+    threading.Thread(
+        target=alerta_demorada,
+        args=(10,),
+        daemon=True
+    ).start()                
 
 def hang_up_with_audio():
     pasos = [
@@ -380,6 +387,10 @@ def hang_up_with_audio():
     jabra_on_off()
     close_call_audio()
 
+def alerta_demorada(tiempo):
+    time.sleep(tiempo)
+    alerta_visual(0, 0, 1000)
+
 def intro_ENG():
     pasos = [
         ("dead point click", (2679, 1066)),
@@ -396,6 +407,12 @@ def intro_ENG():
             time.sleep(0.1)
             pyautogui.hotkey("ctrl", "1")
             pyautogui.press("space")
+            
+    threading.Thread(
+        target=alerta_demorada,
+        args=(12,),
+        daemon=True
+    ).start()       
 
 def volume_up():
     pasos = [
@@ -642,6 +659,37 @@ def audios_health_check():
 
 def log(action):
     print(f"[{datetime.now().strftime('%H:%M:%S')}] {action}")
+
+import tkinter as tk
+
+def alerta_visual(x=0, y=0, duracion=1000):
+    ventana = tk.Tk()
+    ventana.overrideredirect(True)
+    ventana.attributes("-topmost", True)
+    ventana.attributes("-transparentcolor", "white")
+    ventana.configure(bg="white")
+
+    ancho = ventana.winfo_screenwidth() // 8
+    alto = ventana.winfo_screenheight() // 8
+
+    canvas = tk.Canvas(
+        ventana,
+        width=ancho,
+        height=alto,
+        bg="white",
+        highlightthickness=0
+    )
+    canvas.pack()
+
+    canvas.create_oval(
+        0, 0, ancho - 1, alto - 1,
+        fill="blue",
+        outline="blue"
+    )
+
+    ventana.geometry(f"{ancho}x{alto}+{x}+{y}")
+    ventana.after(duracion, ventana.destroy)
+    ventana.mainloop()
 
 def on_press(key):
     try:
