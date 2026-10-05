@@ -389,7 +389,7 @@ def hang_up_with_audio():
 
 def alerta_demorada(tiempo):
     time.sleep(tiempo)
-    alerta_visual(0, 0, 1000)
+    alerta_visual()
 
 def intro_ENG():
     pasos = [
@@ -662,32 +662,42 @@ def log(action):
 
 import tkinter as tk
 
-def alerta_visual(x=0, y=0, duracion=1000):
+def alerta_visual(duracion=1000):
     ventana = tk.Tk()
     ventana.overrideredirect(True)
     ventana.attributes("-topmost", True)
-    ventana.attributes("-transparentcolor", "white")
+    ventana.attributes("-alpha", 0.8)
     ventana.configure(bg="white")
+    ventana.attributes("-transparentcolor", "white")
 
-    ancho = ventana.winfo_screenwidth() // 8
-    alto = ventana.winfo_screenheight() // 8
+    # Tamaño del círculo
+    tamano = 1000
+
+    # Centro de la pantalla
+    pantalla_ancho = ventana.winfo_screenwidth()
+    pantalla_alto = ventana.winfo_screenheight()
+
+    x = (pantalla_ancho - tamano) // 2
+    y = (pantalla_alto - tamano) // 2
 
     canvas = tk.Canvas(
         ventana,
-        width=ancho,
-        height=alto,
+        width=tamano,
+        height=tamano,
         bg="white",
         highlightthickness=0
     )
     canvas.pack()
 
+    # Círculo celeste muy claro
     canvas.create_oval(
-        0, 0, ancho - 1, alto - 1,
-        fill="blue",
-        outline="blue"
+        2, 2,
+        tamano - 2, tamano - 2,
+    fill="#FFFF99",
+    outline="#FFFF99"
     )
 
-    ventana.geometry(f"{ancho}x{alto}+{x}+{y}")
+    ventana.geometry(f"{tamano}x{tamano}+{x}+{y}")
     ventana.after(duracion, ventana.destroy)
     ventana.mainloop()
 
