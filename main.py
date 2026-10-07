@@ -182,8 +182,8 @@ def back_to_business():
         # if nombre == "text box":
         #     time.sleep(0.1)
         #     pyautogui.hotkey('ctrl', 'v')
-    
-    pyautogui.hotkey('ctrl', '2')
+    taking_notes()
+    pyautogui.hotkey('ctrl', 'tab')
 
 def back_to_portal():
     pasos = [
