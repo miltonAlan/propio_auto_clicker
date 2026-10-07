@@ -154,38 +154,36 @@ def backToActive():
             time.sleep(0.1)
             pyautogui.scroll(200)
             
-def pronunciation():
+def back_to_business():
     pasos = [
         ("dead point click", (2679, 1066)),
-        ("chrome", (200, 757)),
-        ("inside", (150, 660)),
-        ("X button", (632, 336)),
-        ("text box", (194, 345)),
-        ("speaker button", (82, 619)),
+        ("Chrome icon", (1569, 1063)),
+        ("inside chrome", (1675, 975)), 
     ]
 
-    pyautogui.press('end')
-    time.sleep(0.1)
+    # pyautogui.press('end')
+    # time.sleep(0.1)
 
-    pyautogui.press('backspace')
-    time.sleep(0.1)
+    # pyautogui.press('backspace')
+    # time.sleep(0.1)
 
-    pyautogui.hotkey('shift', 'home')
-    time.sleep(0.1)
+    # pyautogui.hotkey('shift', 'home')
+    # time.sleep(0.1)
 
-    pyautogui.hotkey('ctrl', 'c')
-    time.sleep(0.1)
+    # time.sleep(0.1)
 
     for nombre, (x, y) in pasos:
         pyautogui.moveTo(x, y)
         pyautogui.click()
 
-        if nombre == "inside":
-            pyautogui.hotkey('ctrl', '8')            
+        # if nombre == "inside":
+        #     pyautogui.hotkey('ctrl', '8')            
         
-        if nombre == "text box":
-            time.sleep(0.1)
-            pyautogui.hotkey('ctrl', 'v')
+        # if nombre == "text box":
+        #     time.sleep(0.1)
+        #     pyautogui.hotkey('ctrl', 'v')
+    
+    pyautogui.hotkey('ctrl', '2')
 
 def back_to_portal():
     pasos = [
@@ -667,37 +665,16 @@ def alerta_visual(duracion=1000):
     ventana.overrideredirect(True)
     ventana.attributes("-topmost", True)
     ventana.attributes("-alpha", 0.8)
-    ventana.configure(bg="white")
-    ventana.attributes("-transparentcolor", "white")
 
-    # Tamaño del círculo
-    tamano = 1000
+    # Azul cielo
+    ventana.configure(bg="#EEFA00")
 
-    # Centro de la pantalla
+    # Pantalla completa
     pantalla_ancho = ventana.winfo_screenwidth()
     pantalla_alto = ventana.winfo_screenheight()
 
-    x = (pantalla_ancho - tamano) // 2
-    y = (pantalla_alto - tamano) // 2
+    ventana.geometry(f"{pantalla_ancho}x{pantalla_alto}+0+0")
 
-    canvas = tk.Canvas(
-        ventana,
-        width=tamano,
-        height=tamano,
-        bg="white",
-        highlightthickness=0
-    )
-    canvas.pack()
-
-    # Círculo celeste muy claro
-    canvas.create_oval(
-        2, 2,
-        tamano - 2, tamano - 2,
-    fill="#FFFF99",
-    outline="#FFFF99"
-    )
-
-    ventana.geometry(f"{tamano}x{tamano}+{x}+{y}")
     ventana.after(duracion, ventana.destroy)
     ventana.mainloop()
 
@@ -793,8 +770,8 @@ def on_press(key):
             backToActive()
         
         if key.char == "\\":
-            log("\\ - pronunciation")
-            pronunciation()
+            log("\\ - back_to_business")
+            back_to_business()
         
         if key.char == '&':
             log("& - music mode ON")
