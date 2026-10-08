@@ -645,15 +645,21 @@ def audios_health_check():
             pyautogui.hotkey("ctrl", "r")
             
             #ya cargado esperamos
+            #EN
             time.sleep(10)
             pyautogui.hotkey("ctrl", "1")
-            pyautogui.click(2501, 277)
+            pyautogui.press("space")
+            #ES
             pyautogui.hotkey("ctrl", "2")
-            pyautogui.click(2501, 277)
+            time.sleep(2)
+            pyautogui.press("space")
+            #TXS    
+            time.sleep(2)
             pyautogui.hotkey("ctrl", "3")
-            pyautogui.click(2501, 277)
-            # general wait time
-            time.sleep(13)
+            pyautogui.press("space")
+            
+            # # general wait time
+            # time.sleep(13)
 
 def log(action):
     print(f"[{datetime.now().strftime('%H:%M:%S')}] {action}")
