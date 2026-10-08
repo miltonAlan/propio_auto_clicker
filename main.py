@@ -658,8 +658,8 @@ def audios_health_check():
             pyautogui.hotkey("ctrl", "3")
             pyautogui.press("space")
             
-            # # general wait time
-            # time.sleep(13)
+            # general wait time
+            time.sleep(13)
 
 def log(action):
     print(f"[{datetime.now().strftime('%H:%M:%S')}] {action}")
