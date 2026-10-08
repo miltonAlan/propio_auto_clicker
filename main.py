@@ -793,7 +793,10 @@ def on_press(key):
             back_from_night_mode()
             
     except Exception as e:
-        print(e)
+        if "has no attribute 'char'" in str(e):
+            print("Key")
+        else:
+            print(e)
 
 with keyboard.Listener(on_press=on_press) as listener:
     listener.join()
