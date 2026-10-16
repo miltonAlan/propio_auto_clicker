@@ -666,14 +666,13 @@ def log(action):
 
 import tkinter as tk
 
-def alerta_visual(duracion=1000):
+def alerta_visual(duracion=1000, color="#EEFA00"):
     ventana = tk.Tk()
     ventana.overrideredirect(True)
     ventana.attributes("-topmost", True)
     ventana.attributes("-alpha", 0.8)
 
-    # Azul cielo
-    ventana.configure(bg="#EEFA00")
+    ventana.configure(bg=color)
 
     # Pantalla completa
     pantalla_ancho = ventana.winfo_screenwidth()
@@ -683,6 +682,14 @@ def alerta_visual(duracion=1000):
 
     ventana.after(duracion, ventana.destroy)
     ventana.mainloop()
+
+import time
+import threading
+
+def pausas_activas():
+    while True:
+        time.sleep(30 * 60)  # Esperar 30 minutos
+        alerta_visual(duracion=60000, color="#00BFFF")
 
 def on_press(key):
     try:
@@ -794,9 +801,15 @@ def on_press(key):
             
     except Exception as e:
         if "has no attribute 'char'" in str(e):
-            print("Key")
+            print(".")
         else:
             print(e)
+
+# Iniciar recordatorios de pausas activas
+threading.Thread(
+    target=pausas_activas,
+    daemon=True
+).start()
 
 with keyboard.Listener(on_press=on_press) as listener:
     listener.join()
