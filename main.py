@@ -688,7 +688,7 @@ import threading
 
 def pausas_activas():
     while True:
-        time.sleep(30 * 60)  # Esperar 30 minutos
+        time.sleep(45 * 60)  # Esperar 45 minutos
         alerta_visual(duracion=60000, color="#00BFFF")
 
 def on_press(key):
