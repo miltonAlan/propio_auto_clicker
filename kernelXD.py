@@ -7,6 +7,7 @@ from pynput import keyboard
 from datetime import datetime
 
 notas_file = "noutes.sql"
+keep_URL = "https://keep.google.com/u/0/"
 
 def clicker():
     pasos = [
@@ -100,19 +101,32 @@ def position_VS_code():
     ]
 
     pyautogui.keyDown('win')
-    for _ in range(5):
-        pyautogui.press('right')
-        time.sleep(1)
+    pyautogui.press('right')
+    time.sleep(1)
+    pyautogui.press('right')
+    time.sleep(1)
+    pyautogui.press('right')
+    time.sleep(1)
+    pyautogui.press('up')
+    time.sleep(1)
+    pyautogui.press('right')
+    time.sleep(1)
+    pyautogui.press('down')
+    time.sleep(1)
     pyautogui.keyUp('win')
 
     time.sleep(2)
     # Click sostenido desde el primer punto hasta el segundo
     pyautogui.moveTo(*pasos[0][1])
     pyautogui.mouseDown()
-
     pyautogui.moveTo(*pasos[1][1], duration=1)
-
     pyautogui.mouseUp()
+    
+    time.sleep(1)
+    pyperclip.copy(str(keep_URL))
+    pyautogui.hotkey('ctrl', 't')
+    pyautogui.hotkey('ctrl', 'v')
+    pyautogui.press('enter')
     
 def edge_setup():
     pasos = [
