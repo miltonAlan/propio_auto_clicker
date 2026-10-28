@@ -80,6 +80,7 @@ def load_VS_code():
             time.sleep(1)
 
     pyautogui.hotkey('enter')
+    pyautogui.hotkey('ctrl', 'home')
     # guardar cambios
     time.sleep(3)
     pyautogui.click(727, 188)
