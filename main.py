@@ -19,6 +19,21 @@ def taking_notes():
     
     pyautogui.scroll(-400)
 
+def address():
+    pasos = [
+        ("dead point click", (2679, 1066)),
+        ("Chrome icon", (1569, 1063)),
+        ("inside chrome", (1675, 975)),   # ajusta si hace falta
+        # ("Chrome Tab VSCode", (2496, 17)),
+        # ("inside VSCode", (2728, 950))
+    ]
+
+    for nombre, (x, y) in pasos:
+        pyautogui.moveTo(x, y)
+        pyautogui.click()
+    
+    pyautogui.hotkey('ctrl', 't')
+
 def googleThat():
 
     pyautogui.press('backspace')
@@ -729,10 +744,10 @@ def on_press(key):
             log("F9 - gpt")
             gpt()
 
-        # if key == keyboard.Key.f10:
-        #     log("F10 - close_call_video")
-        #     close_call_video()
-        
+        if key == keyboard.Key.menu:
+            log("options - address")
+            address()
+            
         if key == keyboard.KeyCode.from_char(','):
         # if key == keyboard.Key.f6:
             log("f6 - googleThat")
