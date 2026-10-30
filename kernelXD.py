@@ -12,17 +12,26 @@ keep_URL = "https://keep.google.com/u/0/"
 def clicker():
     pasos = [
         ("dead point click", (2679, 1066)),
-        # ("chrome", (200, 757)),
-        # ("guardar cambios", (727, 188)),
-        
-        # edge
-        ("edge", (1531, 1063)),        
-        ("dead point inside edge", (2402, 980)),
+        ("edge", (1531, 1063)), 
+        ("tres puntitos", (1821, 200)),
+        ("confirmar", (2204, 701)),
+        ("cierro dialogo", (2402, 417)),
     ]
 
     for nombre, (x, y) in pasos:
         pyautogui.moveTo(x, y)
         pyautogui.click()
+        time.sleep(1)#XXXXXXXXXXXXXXXXXXXX
+        
+        if nombre == "tres puntitos": 
+            for _ in range(6):
+                pyautogui.press('down')
+                time.sleep(0.5)
+            pyautogui.press('enter')
+            time.sleep(0.5)
+            pyautogui.press('down')
+            time.sleep(0.5)
+            pyautogui.press('enter')
 
 def check_all_pages():
     pasos = [
@@ -137,11 +146,10 @@ def edge_setup():
         ("continue on browser", (1923, 612)),
         ("unirse ahora", (2174, 938)),
         ("tres puntitos", (1821, 200)),
-        ("grabar y transcribir", (2039, 701)),
-        ("iniciar transcripcion", (1967, 825)),
+        # ("grabar y transcribir", (2039, 701)),
+        # ("iniciar transcripcion", (1967, 825)),
         ("confirmar", (2204, 701)),
-        # ("microfono", (2072, 202)),
-        ("extender panel transcripcion", (1884, 683)),
+        # ("extender panel transcripcion", (1884, 683)),
         ("cierro dialogo", (2402, 417)),
     ]
 
@@ -158,12 +166,15 @@ def edge_setup():
             pyautogui.scroll(-500)
         if nombre == "unirse ahora": 
             time.sleep(20)
-        if nombre == "microfono": 
-            time.sleep(5)
-        if nombre == "extender panel transcripcion": 
-            time.sleep(10)
-            pyautogui.click()
-            pyautogui.click()
+        if nombre == "tres puntitos": 
+            for _ in range(6):
+                pyautogui.press('down')
+                time.sleep(0.5)
+            pyautogui.press('enter')
+            time.sleep(0.5)
+            pyautogui.press('down')
+            time.sleep(0.5)
+            pyautogui.press('enter')
 
 def brave_setup():
     pasos = [
