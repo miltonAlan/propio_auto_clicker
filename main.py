@@ -748,10 +748,10 @@ def on_press(key):
             log("options - address")
             address()
             
-        if key == keyboard.KeyCode.from_char(','):
-        # if key == keyboard.Key.f6:
-            log("f6 - googleThat")
-            googleThat()
+        # if key == keyboard.KeyCode.from_char(','):
+        # # if key == keyboard.Key.f6:
+        #     log("f6 - googleThat")
+        #     googleThat()
         
         if key == keyboard.Key.f10:
             log("f10 - hang_up_with_audio")
