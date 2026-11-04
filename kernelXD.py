@@ -5,6 +5,7 @@ import pyautogui
 import time
 from pynput import keyboard
 from datetime import datetime
+# from main import taking_notes
 
 notas_file = "noutes.sql"
 keep_URL = "https://keep.google.com/u/0/"
@@ -13,25 +14,28 @@ def clicker():
     pasos = [
         ("dead point click", (2679, 1066)),
         ("edge", (1531, 1063)), 
-        ("tres puntitos", (1821, 200)),
-        ("confirmar", (2204, 701)),
-        ("cierro dialogo", (2402, 417)),
+        # ("tres puntitos", (1821, 200)),
+        # ("confirmar", (2204, 701)),
+        # ("cierro dialogo", (2402, 417)),
     ]
 
     for nombre, (x, y) in pasos:
         pyautogui.moveTo(x, y)
         pyautogui.click()
-        time.sleep(1)#XXXXXXXXXXXXXXXXXXXX
         
-        if nombre == "tres puntitos": 
-            for _ in range(6):
-                pyautogui.press('down')
-                time.sleep(0.5)
-            pyautogui.press('enter')
-            time.sleep(0.5)
-            pyautogui.press('down')
-            time.sleep(0.5)
-            pyautogui.press('enter')
+    #     if nombre == "tres puntitos": 
+    #         for _ in range(6):
+    #             pyautogui.press('down')
+    #             time.sleep(0.5)
+    #         pyautogui.press('enter')
+    #         time.sleep(0.5)
+    #         pyautogui.press('down')
+    #         time.sleep(0.5)
+    #         pyautogui.press('enter')
+    pyautogui.moveTo(1908, 26)
+    pyautogui.mouseDown()
+    pyautogui.moveTo(1366, 441, duration=1)
+    pyautogui.mouseUp()   
 
 def check_all_pages():
     pasos = [
@@ -175,6 +179,16 @@ def edge_setup():
             pyautogui.press('down')
             time.sleep(0.5)
             pyautogui.press('enter')
+            time.sleep(1)
+        if nombre == "confirmar": 
+            # posicionamos el navegador 
+            # taking_notes()
+            pyautogui.moveTo(1908, 26)
+            pyautogui.mouseDown()
+            pyautogui.moveTo(1366, 441, duration=1)
+            pyautogui.mouseUp()      
+            
+            
 
 def brave_setup():
     pasos = [
