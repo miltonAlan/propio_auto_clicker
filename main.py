@@ -19,7 +19,7 @@ def taking_notes():
     
     pyautogui.scroll(-400)
 
-def address():
+def newTab():
     pasos = [
         ("dead point click", (2679, 1066)),
         ("Chrome icon", (1569, 1063)),
@@ -745,8 +745,8 @@ def on_press(key):
             gpt()
 
         if key == keyboard.Key.menu:
-            log("options - address")
-            address()
+            log("options - newTab")
+            newTab()
             
         # if key == keyboard.KeyCode.from_char(','):
         # # if key == keyboard.Key.f6:
