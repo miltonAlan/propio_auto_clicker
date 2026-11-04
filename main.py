@@ -736,10 +736,12 @@ def on_press(key):
 
         if key == keyboard.Key.f6:
             log("F6 - intro_ENG")
+            alerta_visual(duracion=1000, color="#04FF2E")
             intro_ENG()
 
         if key == keyboard.Key.f8:
             log("F8 - intro_ESP")
+            alerta_visual(duracion=1000, color="#04FF2E")
             intro_ESP()
 
         if key == keyboard.Key.f9:
