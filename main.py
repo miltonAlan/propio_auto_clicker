@@ -663,15 +663,17 @@ def audios_health_check():
             #EN
             time.sleep(10)
             pyautogui.hotkey("ctrl", "1")
-            pyautogui.press("space")
+            pyautogui.click(2503, 279)
             #ES
             pyautogui.hotkey("ctrl", "2")
             time.sleep(2)
-            pyautogui.press("space")
+            pyautogui.click(2503, 279)
+            # pyautogui.press("space")
             #TXS    
             time.sleep(2)
             pyautogui.hotkey("ctrl", "3")
-            pyautogui.press("space")
+            pyautogui.click(2503, 279)
+            # pyautogui.press("space")
             
             # general wait time
             time.sleep(13)
