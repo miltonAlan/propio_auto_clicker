@@ -661,7 +661,7 @@ def audios_health_check():
             
             #ya cargado esperamos
             #EN
-            time.sleep(10)
+            time.sleep(15)
             pyautogui.hotkey("ctrl", "1")
             pyautogui.click(2503, 279)
             #ES
@@ -775,55 +775,68 @@ def on_press(key):
 
         if key.char == '-':
             log("- - close_call_audio")
+            pyautogui.press('backspace')            
             close_call_audio()
 
         if key.char == '*':
             log("* - taking_call_audio")
+            pyautogui.press('backspace')   
             taking_call_audio()
 
         if key.char == '`' or key.char == '|':
             log("` or | - mute_unmute")
+            pyautogui.press('backspace')   
             mute_unmute()
 
         if key.char == ';':
             log("; - edge")
+            pyautogui.press('backspace')   
             edge()
 
         if key.char == ']':
             log("] - deepL")
+            pyautogui.press('backspace')   
             deepL()
 
         if key.char == '[':
             log("[ - hold_time")
+            pyautogui.press('backspace')   
             hold_time()
 
         if key.char == "'":
             log("' - jabra_on_off")
+            pyautogui.press('backspace')   
             jabra_on_off()
             
         if key.char == '/':
             log("/ - hang up LEP")
+            pyautogui.press('backspace')   
             hangUpLEP()
         
         if key.char == '+':
             log("+ - back to active")
+            pyautogui.press('backspace')   
             backToActive()
         
         if key.char == "\\":
             log("\\ - back_to_business")
+            pyautogui.press('backspace')   
             back_to_business()
         
         if key.char == '&':
             log("& - music mode ON")
+            pyautogui.press('backspace')   
             music_mode_ON()
             reset_volume_aux()
         
         if key.char == '^':
             log("^ - music mode OFF")
+            pyautogui.press('backspace')   
             music_mode_OFF()
         
         if key.char == '!':
             log("! - back_from_night_mode")
+            pyautogui.press('backspace')   
             back_from_night_mode()
             
     except Exception as e:
