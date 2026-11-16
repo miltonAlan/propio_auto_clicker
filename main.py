@@ -250,7 +250,7 @@ def dial_out():
             pyautogui.hotkey('ctrl', 'v')
             time.sleep(0.1)
             pyautogui.press('enter')
-            print("placing a call")            
+            # print("placing a call")            
 
 def gpt():
     pasos = [
@@ -529,7 +529,7 @@ def close_call_audio():
             time.sleep(0.1)
             pyautogui.hotkey('ctrl', '5')
         if nombre == "END":
-            print("Haciendo scroll hacia abajo...")
+            # print("Haciendo scroll hacia abajo...")
             time.sleep(0.3)
             pyautogui.scroll(-2500)
             pyautogui.scroll(-2500)
@@ -621,11 +621,11 @@ def deepL():
 
             pyautogui.mouseUp(button='left')  # suelta recién al final
 
-            print(f"Drag en {nombre} -> ({x}, {y})")
+            # print(f"Drag en {nombre} -> ({x}, {y})")
 
         else:
             pyautogui.click()
-            print(f"Click en {nombre} -> ({x}, {y})")
+            # print(f"Click en {nombre} -> ({x}, {y})")
 
         time.sleep(0.1)
     # pyautogui.hotkey('ctrl', 'l')
