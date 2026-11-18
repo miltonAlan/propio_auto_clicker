@@ -383,10 +383,14 @@ def hang_up_with_audio():
     pasos = [
         ("dead point click", (2679, 1066)),
         ("brave", (1600, 1067)),
-        # ("TXS", (2274, 234)),
     ]
 
-    jabra_on_off()
+    # jabra_on_off()
+    volume_down() #no quitar estoy sino no funciona el click
+    pyautogui.click(button="right")
+    pyautogui.write("-59")
+    pyautogui.press("enter")
+
     for nombre, (x, y) in pasos:
         pyautogui.moveTo(x, y)
         pyautogui.click()
@@ -471,7 +475,7 @@ def reset_volume():
     pyautogui.scroll(-1)
     # pyautogui.scroll(-1)
 
-def volume_down():
+def volume_down(cantidad=-1):
     pasos = [
         ("dead point click", (2679, 1066)),
         ("voicemeter icon", (1678, 1060)),        
@@ -481,11 +485,8 @@ def volume_down():
     for nombre, (x, y) in pasos:
         pyautogui.moveTo(x, y)
         pyautogui.click()
-        # print(f"Click en {nombre} -> ({x}, {y})")
-        # time.sleep(0.1)
 
-    pyautogui.scroll(-1)
-    # print("volume down")   
+    pyautogui.scroll(cantidad)
 
 def edge():
     pasos = [
@@ -529,51 +530,9 @@ def close_call_audio():
             time.sleep(0.1)
             pyautogui.hotkey('ctrl', '5')
         if nombre == "END":
-            # print("Haciendo scroll hacia abajo...")
             time.sleep(0.3)
             pyautogui.scroll(-2500)
             pyautogui.scroll(-2500)
-
-# def close_call_audio_with_audio():
-#     pasos = [
-#         # my pleasure audio
-#         ("dead point click", (2679, 1066)),
-#         ("Brave", (1600, 1067)),
-#         ("PLEASURE", (2260, 240)),
-
-#         ("dead point click", (2679, 1066)),
-#         ("voicemeter icon", (1678, 1060)),
-#         ("A3", (2813, 838)),
-#         ("chrome", (200, 757)),
-#         ("inside", (150, 660)), # pilas no cambiar el nombre
-#         ("hang up button", (200, 450)), 
-#         ("END", (944, 487)), # pilas no cambiar el nombre
-#         ("successfully", (422, 210)),
-#         ("save n close", (1236,650)),
-#         ("save n close x2", (1135,493))
-#     ]
-
-#     for nombre, (x, y) in pasos:
-#         pyautogui.moveTo(x, y)
-#         pyautogui.click()
-#         # print(f"Click en {nombre} -> ({x}, {y})")
-#         time.sleep(0.2)
-
-#         # 👉 Presionar SPACE para reproducir
-#         if nombre == "PLEASURE":
-#             pyautogui.press('space')
-#             time.sleep(5)
-
-#         # 👉 Ejecutar Ctrl + 5 cuando dentro de chrome
-#         if nombre == "inside":
-#             time.sleep(0.1)
-#             pyautogui.hotkey('ctrl', '4')
-#         if nombre == "END":
-#             # time.sleep(0.1)
-#             print("Haciendo scroll hacia abajo...")
-#             pyautogui.scroll(-2500)
-#             pyautogui.scroll(-2500)
-#             time.sleep(0.1)
 
 def close_call_video():
     pasos = [
