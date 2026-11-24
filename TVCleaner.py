@@ -9,8 +9,8 @@ LIMPIAR_DELAY = 5
 
 PUNTOS = [
     ("publicidad",      2603, 215),
-    ("basurero",        1389, 659),
-    ("limpiar objetos", 1538, 661),
+    ("basurero",        1389, 697),
+    ("limpiar objetos", 1555, 699),
 ]
 
 def ejecutar_pasos():
