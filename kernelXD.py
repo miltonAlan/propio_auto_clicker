@@ -194,40 +194,28 @@ def brave_setup():
     pasos = [
         ("dead point click", (2679, 1066)),
         ("brave", (1600, 1067)),
-        ("morning", (2352, 154)),
-        ("afternoon", (2444, 157)),
+        ("intros", (2352, 154)),
+        # ("afternoon", (2444, 157)),
     ]
 
     for nombre, (x, y) in pasos:
-        time.sleep(1)
-        if nombre == "morning":
-            if datetime.now().hour < 12:
-                time.sleep(5)
-                pyautogui.moveTo(x, y)
-                pyautogui.click()
+        # time.sleep(1)
+        if nombre == "intros":
+            time.sleep(5) # carga de brave
+            # pyautogui.moveTo(x, y)
+            # pyautogui.click()
 
-                pyautogui.rightClick(x, y)
-                pyautogui.press("down")
-                pyautogui.press("enter")
-
-        elif nombre == "afternoon":
-            if datetime.now().hour >= 12:
-                time.sleep(5)
-                pyautogui.moveTo(x, y)
-                pyautogui.click()
-
-                pyautogui.rightClick(x, y)
-                pyautogui.press("down")
-                pyautogui.press("enter")
-
+            pyautogui.rightClick(x, y)
+            pyautogui.press("down")
+            pyautogui.press("enter")
         else:
             pyautogui.moveTo(x, y)
             pyautogui.click()
             
     # cierro pestania en blanco
     pyautogui.hotkey("ctrl", "w")
-    # espero carguen todas las pantallas
-    time.sleep(10)
+    # # espero carguen todas las pantallas
+    # time.sleep(10)
             
 def audios_checkup():
     pasos = [
@@ -284,8 +272,8 @@ def menu_principal():
             print("\n>>> EJECUTANDO TODAS LAS SECCIONES <<<\n")
 
             # Revisión general
-            print(">>> REVISIÓN GENERAL")
-            check_all_pages()
+            # print(">>> REVISIÓN GENERAL")
+            # check_all_pages()
 
             # VS Code
             print(">>> VS CODE")
@@ -300,7 +288,7 @@ def menu_principal():
             # Introducción de audios
             print(">>> INTRODUCCIÓN DE AUDIOS")
             brave_setup()
-            audios_checkup()
+            # audios_checkup()
 
             print("\n>>> TODAS LAS SECCIONES FINALIZADAS <<<")
 
@@ -373,7 +361,7 @@ def menu_principal():
                 print(">>> INTRODUCCIÓN DE AUDIOS")
 
                 brave_setup()
-                audios_checkup()
+                # audios_checkup()
 
             print("\n>>> SELECCIÓN FINALIZADA <<<")
 

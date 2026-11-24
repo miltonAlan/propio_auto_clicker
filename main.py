@@ -360,7 +360,6 @@ def intro_ESP():
     pasos = [
         ("dead point click", (2679, 1066)),
         ("brave", (1600, 1067)),
-        # ("ESP", (2269, 209)),
     ]
 
     for nombre, (x, y) in pasos:
@@ -370,7 +369,10 @@ def intro_ESP():
 
         if nombre == "brave":
             time.sleep(0.1)
-            pyautogui.hotkey("ctrl", "2")
+            hora = datetime.now().hour
+            pestaña = "2" if hora < 12 else "4"
+
+            pyautogui.hotkey("ctrl", pestaña)
             pyautogui.click(2503, 279)
            
     threading.Thread(
@@ -397,7 +399,7 @@ def hang_up_with_audio():
 
         if nombre == "brave":
             time.sleep(0.1)
-            pyautogui.hotkey("ctrl", "3")
+            pyautogui.hotkey("ctrl", "5")
             pyautogui.click(2503, 279)
             
     time.sleep(7)
@@ -412,7 +414,6 @@ def intro_ENG():
     pasos = [
         ("dead point click", (2679, 1066)),
         ("brave", (1600, 1067)),
-        # ("ENG", (2269, 179)),
     ]
 
     for nombre, (x, y) in pasos:
@@ -422,7 +423,10 @@ def intro_ENG():
 
         if nombre == "brave":
             time.sleep(0.1)
-            pyautogui.hotkey("ctrl", "1")
+            hora = datetime.now().hour
+            pestaña = "1" if hora < 12 else "3"
+
+            pyautogui.hotkey("ctrl", pestaña)
             pyautogui.click(2503, 279)
             
     threading.Thread(
@@ -593,14 +597,8 @@ def deepL():
 
 def audios_health_check():
     pasos = [
-        # ("dead point click", (2679, 1066)),
-        # ("voicemeter icon", (1678, 1060)),
-        # ("B1 aux", (2937, 871)),
         ("dead point click", (2679, 1066)),
         ("brave", (1600, 1067)),
-        # ("dead point click", (2679, 1066)),
-        # ("voicemeter icon", (1678, 1060)),
-        # ("B1 aux", (2937, 871)),
     ]
 
     for nombre, (x, y) in pasos:
@@ -608,34 +606,9 @@ def audios_health_check():
         pyautogui.click()
         
         if nombre == "brave":
-            #EN
-            pyautogui.hotkey("ctrl", "1")
-            pyautogui.hotkey("ctrl", "r")
-            #ES
-            pyautogui.hotkey("ctrl", "2")
-            pyautogui.hotkey("ctrl", "r")
-            #TXS    
-            pyautogui.hotkey("ctrl", "3")
-            pyautogui.hotkey("ctrl", "r")
-            
-            # #ya cargado esperamos
-            # #EN
-            # time.sleep(15)
-            # pyautogui.hotkey("ctrl", "1")
-            # pyautogui.click(2503, 279)
-            # #ES
-            # pyautogui.hotkey("ctrl", "2")
-            # time.sleep(2)
-            # pyautogui.click(2503, 279)
-            # # pyautogui.press("space")
-            # #TXS    
-            # time.sleep(2)
-            # pyautogui.hotkey("ctrl", "3")
-            # pyautogui.click(2503, 279)
-            # # pyautogui.press("space")
-            
-            # general wait time
-            # time.sleep(13)
+            for i in range(1, 6):
+                pyautogui.hotkey("ctrl", str(i))
+                pyautogui.hotkey("ctrl", "r")
 
 def log(action):
     print(f"[{datetime.now().strftime('%H:%M:%S')}] {action}")
