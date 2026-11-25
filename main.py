@@ -1,8 +1,10 @@
 import pyautogui
-import time
 from pynput import keyboard
 from datetime import datetime
 import threading
+import time
+import threading
+import tkinter as tk
 
 def taking_notes():
     pasos = [
@@ -625,7 +627,7 @@ def audios_health_check():
 def log(action):
     print(f"[{datetime.now().strftime('%H:%M:%S')}] {action}")
 
-import tkinter as tk
+
 
 def alerta_visual(duracion=1000, color="#EEFA00"):
     ventana = tk.Tk()
@@ -644,8 +646,7 @@ def alerta_visual(duracion=1000, color="#EEFA00"):
     ventana.after(duracion, ventana.destroy)
     ventana.mainloop()
 
-import time
-import threading
+
 
 def pausas_activas():
     while True:
