@@ -92,8 +92,8 @@ def hangUpLEP():
         ("dead point click", (2679, 1066)),
         ("chrome", (200, 757)),
         ("inside", (150, 660)),
-        ("hang up button", (274, 626)),
-        ("remove button", (961, 483)),
+        ("x", (1292, 415)),
+        ("remove caller", (856, 512)),
     ]
 
     for nombre, (x, y) in pasos:
@@ -160,19 +160,22 @@ def backToActive():
         ("dead point click", (2679, 1066)),
         ("chrome", (200, 757)),
         ("inside", (150, 660)),
-        ("back to active button", (1278, 152)),
+        ("dead point inside", (157, 143)),
+        ("Go Online", (1278, 152)),
         ("start taking calls", (1165, 733)),
-        ("Ok message", (805, 542)),
     ]
 
+    # for _ in range(2):
     for nombre, (x, y) in pasos:
         pyautogui.moveTo(x, y)
         pyautogui.click()
 
         if nombre == "inside":
             pyautogui.hotkey('ctrl', '5')
-            time.sleep(0.1)
-            pyautogui.scroll(200)
+        
+        if nombre == "dead point inside":
+            pyautogui.hotkey('esc')
+            time.sleep(0.5)
             
 def back_to_business():
     pasos = [
@@ -226,8 +229,9 @@ def dial_out():
         ("dead point click", (2679, 1066)),
         ("chrome", (200, 757)),
         ("inside", (150, 660)), # pilas no cambiar el nombre
-        ("dial out button", (162, 160)), 
-        ("text box", (151, 296)) # no cambiar
+        ("add participant", (659, 469)), 
+        ("text box", (1169, 362)), # no cambiar
+        ("call button", (1266, 493)) # no cambiar
     ]
 
     pyautogui.press('end')
@@ -253,9 +257,8 @@ def dial_out():
         if nombre == "text box":
             time.sleep(0.2)
             pyautogui.hotkey('ctrl', 'v')
-            time.sleep(0.1)
-            pyautogui.press('enter')
-            # print("placing a call")            
+            # time.sleep(0.1)
+            # pyautogui.press('enter')
 
 def gpt():
     pasos = [
@@ -526,7 +529,7 @@ def close_call_audio():
         ("inside", (150, 660)), # pilas no cambiar el nombre
         ("hang up button", (1285, 155)), 
         ("END", (895, 515)), # pilas no cambiar el nombre
-        ("successfully", (797, 514)),
+        ("successfully", (830, 523)),
         ("submit", (1258,685)),
         ("yes, submit", (882,514))
     ]
@@ -538,6 +541,9 @@ def close_call_audio():
         if nombre == "inside":
             time.sleep(0.1)
             pyautogui.hotkey('ctrl', '5')
+            
+        if nombre == "END":
+            time.sleep(1)
             
         if nombre == "successfully":
             time.sleep(0.3)
@@ -652,10 +658,6 @@ def on_press(key):
             log("F2 - dial_out")
             dial_out()
 
-        # if key == keyboard.Key.f3:
-        #     log("F3 - taking_call_video")
-        #     taking_call_video()
-
         if key == keyboard.Key.f4:
             log("F4 - taking_notes")
             taking_notes()
@@ -697,11 +699,6 @@ def on_press(key):
         if key == keyboard.Key.menu:
             log("options - newTab")
             newTab()
-            
-        # if key == keyboard.KeyCode.from_char(','):
-        # # if key == keyboard.Key.f6:
-        #     log("f6 - googleThat")
-        #     googleThat()
         
         if key == keyboard.Key.f10:
             log("f10 - hang_up_with_audio")
