@@ -25,9 +25,7 @@ def newTab():
     pasos = [
         ("dead point click", (2679, 1066)),
         ("Chrome icon", (1569, 1063)),
-        ("inside chrome", (1675, 975)),   # ajusta si hace falta
-        # ("Chrome Tab VSCode", (2496, 17)),
-        # ("inside VSCode", (2728, 950))
+        ("inside chrome", (1675, 975)),   
     ]
 
     for nombre, (x, y) in pasos:
@@ -85,9 +83,6 @@ def taking_call_audio():
         
         if nombre == "inside again":
             time.sleep(3)
-            
-    # time.sleep(3)       
-    # pyautogui.scroll(-250)
 
 def hangUpLEP():
     pasos = [
@@ -167,7 +162,6 @@ def backToActive():
         ("start taking calls", (1165, 733)),
     ]
 
-    # for _ in range(2):
     for nombre, (x, y) in pasos:
         pyautogui.moveTo(x, y)
         pyautogui.click()
@@ -186,27 +180,10 @@ def back_to_business():
         ("inside chrome", (1675, 975)), 
     ]
 
-    # pyautogui.press('end')
-    # time.sleep(0.1)
-
-    # pyautogui.press('backspace')
-    # time.sleep(0.1)
-
-    # pyautogui.hotkey('shift', 'home')
-    # time.sleep(0.1)
-
-    # time.sleep(0.1)
-
     for nombre, (x, y) in pasos:
         pyautogui.moveTo(x, y)
         pyautogui.click()
 
-        # if nombre == "inside":
-        #     pyautogui.hotkey('ctrl', '8')            
-        
-        # if nombre == "text box":
-        #     time.sleep(0.1)
-        #     pyautogui.hotkey('ctrl', 'v')
     taking_notes()
     pyautogui.hotkey('ctrl', 'tab')
 
@@ -230,10 +207,10 @@ def dial_out():
     pasos = [
         ("dead point click", (2679, 1066)),
         ("chrome", (200, 757)),
-        ("inside", (150, 660)), # pilas no cambiar el nombre
+        ("inside", (150, 660)), 
         ("add participant", (659, 469)), 
-        ("text box", (1169, 362)), # no cambiar
-        ("call button", (1266, 493)) # no cambiar
+        ("text box", (1169, 362)), 
+        ("call button", (1266, 493)) 
     ]
 
     pyautogui.press('end')
@@ -248,10 +225,8 @@ def dial_out():
     for nombre, (x, y) in pasos:
         pyautogui.moveTo(x, y)
         pyautogui.click()
-        # print(f"Click en {nombre} -> ({x}, {y})")
         time.sleep(0.2)
 
-        # 👉 Ejecutar Ctrl + 5 cuando dentro de chrome
         if nombre == "inside":
             time.sleep(0.1)
             pyautogui.hotkey('ctrl', '5')
@@ -259,8 +234,6 @@ def dial_out():
         if nombre == "text box":
             time.sleep(0.2)
             pyautogui.hotkey('ctrl', 'v')
-            # time.sleep(0.1)
-            # pyautogui.press('enter')
 
 def gpt():
     pasos = [
@@ -314,7 +287,6 @@ def jabra_on_off():
     for nombre, (x, y) in pasos:
         pyautogui.moveTo(x, y)
         pyautogui.click()
-        # print(f"Click en {nombre} -> ({x}, {y})")
 
 def night_mode():
     pasos = [
@@ -331,7 +303,6 @@ def night_mode():
     for nombre, (x, y) in pasos:
         pyautogui.moveTo(x, y)
         pyautogui.click()
-        # print(f"Click en {nombre} -> ({x}, {y})")
 
     for _ in range(12): pyautogui.scroll(-1)
 
@@ -339,7 +310,7 @@ def taking_call_video():
     pasos = [
         ("dead point click", (2679, 1066)),
         ("chrome", (200, 757)),
-        ("inside", (150, 660)), # pilas no cambiar el nombre
+        ("inside", (150, 660)),
         ("accept call", (948, 478)), 
         ("voicemeter icon", (1678, 1060)),
         ("A3", (2813, 838)),
@@ -350,19 +321,16 @@ def taking_call_video():
         ("dead point chrome", (773, 178)),
     ]
 
-    reset_volume()  # Asegura que el volumen esté en un nivel conocido antes de empezar     
+    reset_volume()
 
     for nombre, (x, y) in pasos:
         pyautogui.moveTo(x, y)
         pyautogui.click()
-        # print(f"Click en {nombre} -> ({x}, {y})")
         time.sleep(0.2)
 
-        # 👉 Ejecutar Ctrl + 5 cuando dentro de chrome
         if nombre == "inside":
             time.sleep(0.1)
             pyautogui.hotkey('ctrl', '4')
-    # Haciendo scroll hacia abajo...
     time.sleep(3)       
     pyautogui.scroll(-200)
 
@@ -455,8 +423,6 @@ def volume_up():
     for nombre, (x, y) in pasos:
         pyautogui.moveTo(x, y)
         pyautogui.click()
-        # print(f"Click en {nombre} -> ({x}, {y})")
-        # time.sleep(0.1)
 
     pyautogui.scroll(1)
 
@@ -484,10 +450,8 @@ def reset_volume():
     for nombre, (x, y) in pasos:
         pyautogui.moveTo(x, y)
         pyautogui.click()
-        # print(f"Click en {nombre} -> ({x}, {y})")
     
     pyautogui.scroll(-1)
-    # pyautogui.scroll(-1)
 
 def volume_down(cantidad=-1):
     pasos = [
@@ -507,13 +471,11 @@ def edge():
         ("dead point click", (2679, 1066)),
         ("edge", (1531, 1063)),        
         ("dead point inside edge", (2402, 980)),
-        # ("3x click", (2376, 1031))
     ]
 
     for nombre, (x, y) in pasos:
         pyautogui.moveTo(x, y)
         pyautogui.click()
-        # print(f"Click en {nombre} -> ({x}, {y})")
         time.sleep(0.1)
 
 def hold_time():
@@ -528,9 +490,9 @@ def close_call_audio():
         ("voicemeter icon", (1678, 1060)),
         ("A3", (2813, 838)),
         ("chrome", (200, 757)),
-        ("inside", (150, 660)), # pilas no cambiar el nombre
+        ("inside", (150, 660)),
         ("hang up button", (1285, 155)), 
-        ("END", (895, 515)), # pilas no cambiar el nombre
+        ("END", (895, 515)), 
         ("successfully", (830, 523)),
         ("submit", (1258,685)),
         ("yes, submit", (882,514))
@@ -558,7 +520,7 @@ def close_call_video():
         ("voicemeter icon", (1678, 1060)),
         ("A3", (2813, 838)),
         ("chrome", (200, 757)),
-        ("inside", (150, 660)), # pilas no cambiar el nombre
+        ("inside", (150, 660)), 
         ("hang up button", (217, 678)), 
         ("successfully", (119, 217)),
         ("save n close", (1236,650)),
@@ -568,15 +530,11 @@ def close_call_video():
     for nombre, (x, y) in pasos:
         pyautogui.moveTo(x, y)
         pyautogui.click()
-        # print(f"Click en {nombre} -> ({x}, {y})")
         time.sleep(0.2)
 
-        # 👉 Ejecutar Ctrl + 5 cuando dentro de chrome
         if nombre == "inside":
             time.sleep(0.1)
             pyautogui.hotkey('ctrl', '4')
-
-    # reset_volume()
 
 def deepL():
     pasos = [
@@ -598,14 +556,10 @@ def deepL():
 
             pyautogui.mouseUp(button='left')  # suelta recién al final
 
-            # print(f"Drag en {nombre} -> ({x}, {y})")
-
         else:
             pyautogui.click()
-            # print(f"Click en {nombre} -> ({x}, {y})")
 
         time.sleep(0.1)
-    # pyautogui.hotkey('ctrl', 'l')
     # boton traducir deepL
     pyautogui.click(1530, 346)
 
