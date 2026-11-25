@@ -58,13 +58,13 @@ def taking_call_audio():
         ("dead point click", (2679, 1066)),
         ("chrome", (200, 757)),
         ("inside", (150, 660)),
-        ("accept call", (948, 478)), 
+        ("accept call", (1100, 682)), 
         ("voicemeter icon", (1678, 1060)),
         ("A3", (2813, 838)),
         ("dead point click", (2679, 1066)),
         ("chrome", (200, 757)),
         ("inside again", (150, 660)),
-        ("dead point chrome", (773, 178)),
+        ("intake questions", (561, 510)),
     ]
     
     reset_volume()
@@ -80,9 +80,12 @@ def taking_call_audio():
 
         if nombre == "A3":
             intro_ENG()
+        
+        if nombre == "inside again":
+            time.sleep(3)
             
-    time.sleep(3)       
-    pyautogui.scroll(-250)
+    # time.sleep(3)       
+    # pyautogui.scroll(-250)
 
 def hangUpLEP():
     pasos = [
@@ -157,7 +160,9 @@ def backToActive():
         ("dead point click", (2679, 1066)),
         ("chrome", (200, 757)),
         ("inside", (150, 660)),
-        ("back to active button", (880, 415)),
+        ("back to active button", (1278, 152)),
+        ("start taking calls", (1165, 733)),
+        ("Ok message", (805, 542)),
     ]
 
     for nombre, (x, y) in pasos:
@@ -519,11 +524,11 @@ def close_call_audio():
         ("A3", (2813, 838)),
         ("chrome", (200, 757)),
         ("inside", (150, 660)), # pilas no cambiar el nombre
-        ("hang up button", (200, 450)), 
-        ("END", (944, 487)), # pilas no cambiar el nombre
-        ("successfully", (422, 210)),
-        ("save n close", (1236,650)),
-        ("save n close x2", (1135,493))
+        ("hang up button", (1285, 155)), 
+        ("END", (895, 515)), # pilas no cambiar el nombre
+        ("successfully", (797, 514)),
+        ("submit", (1258,685)),
+        ("yes, submit", (882,514))
     ]
 
     for nombre, (x, y) in pasos:
@@ -533,7 +538,8 @@ def close_call_audio():
         if nombre == "inside":
             time.sleep(0.1)
             pyautogui.hotkey('ctrl', '5')
-        if nombre == "END":
+            
+        if nombre == "successfully":
             time.sleep(0.3)
             pyautogui.scroll(-2500)
             pyautogui.scroll(-2500)
