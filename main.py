@@ -180,9 +180,7 @@ def back_to_business():
         ("inside chrome", (1675, 975)), 
     ]
 
-    for nombre, (x, y) in pasos:
-        pyautogui.moveTo(x, y)
-        pyautogui.click()
+    # for nombre, (x, y) in pasos:
 
     taking_notes()
     pyautogui.hotkey('ctrl', 'tab')
