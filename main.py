@@ -177,13 +177,15 @@ def back_to_business():
     pasos = [
         ("dead point click", (2679, 1066)),
         ("Chrome icon", (1569, 1063)),
-        ("inside chrome", (1675, 975)), 
+        ("inside chrome", (1732, 977)), 
     ]
 
-    # for nombre, (x, y) in pasos:
+    for nombre, (x, y) in pasos:
+        pyautogui.moveTo(x, y)
+        pyautogui.click()
 
-    taking_notes()
-    pyautogui.hotkey('ctrl', 'tab')
+    # taking_notes()
+    # pyautogui.hotkey('ctrl', 'tab')
 
 def back_to_portal():
     pasos = [
