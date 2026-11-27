@@ -1,30 +1,31 @@
-import time
+import subprocess
+
 import pyautogui
+from pynput import keyboard
+from datetime import datetime
+import threading
+import time
+import threading
+import tkinter as tk
 
-PUNTOS = [
-    ((3000, 1060), False),
-    ((1787, 1067), False),
-    ((2601, 210),  True),
-    ((1389, 659), False),
-    ((1538, 661), False),
-]
+def log(action):
+    print(f"[{datetime.now().strftime('%H:%M:%S')}] {action}")
 
-def ejecutar():
-    for pos, ejecutar_ciclo in PUNTOS:
-        pyautogui.click(*pos)
+def kill():
+    comando = 'taskkill /f /im "Rocksmith2014.exe"'
+    subprocess.run(comando, shell=True)
 
-        if ejecutar_ciclo:
-            time.sleep(20)
+def on_press(key):
+    try:
+        if key.char == 'k':
+            log("k - kill")
+            kill()
+            
+    except Exception as e:
+        if "has no attribute 'char'" in str(e):
+            print(".")
+        else:
+            print(e)
 
-            for _ in range(12):
-                pyautogui.click(*PUNTOS[3][0])
-                pyautogui.click(*PUNTOS[4][0])
-                pyautogui.press("space")
-                pyautogui.press("down")
-                time.sleep(2)
-
-def main():
-    ejecutar()
-
-if __name__ == "__main__":
-    main()
+with keyboard.Listener(on_press=on_press) as listener:
+    listener.join()
